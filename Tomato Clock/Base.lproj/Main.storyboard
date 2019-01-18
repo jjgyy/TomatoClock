@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="89J-A8-PsE">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="beb-5a-x84">
+            <objects>
+                <navigationController id="89J-A8-PsE" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="swt-gS-gdl">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Xz7-M9-DnZ" kind="relationship" relationship="rootViewController" id="KGD-Uh-hXY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pUn-4t-Pbz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-282" y="-288"/>
+        </scene>
+        <!--Clock View Controller-->
+        <scene sceneID="vh7-bM-C4l">
+            <objects>
+                <viewController id="Xz7-M9-DnZ" customClass="ClockViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mZq-2x-ttX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYU-tp-3At" customClass="TimeDisplayLabel">
+                                <rect key="frame" x="140.5" y="344.5" width="94" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FYU-tp-3At" firstAttribute="centerY" secondItem="u5u-lL-KEB" secondAttribute="centerY" id="E7L-a7-spc"/>
+                            <constraint firstItem="FYU-tp-3At" firstAttribute="centerX" secondItem="u5u-lL-KEB" secondAttribute="centerX" id="s6O-yN-Der"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="u5u-lL-KEB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="DmH-g0-R5Q"/>
+                    <connections>
+                        <outlet property="timeDisplayLabel" destination="FYU-tp-3At" id="RJl-rg-er8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C8q-lt-cMn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="741.60000000000002" y="-288.30584707646182"/>
+        </scene>
+    </scenes>
+</document>
