@@ -11,12 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TimeDisplayLabel : UILabel
-{
-    @private
-    int _displayedSeconds;
-}
 
-@property int displayedSeconds;
+@property(nonatomic, assign) NSInteger displayedSeconds;
 
 @end
 

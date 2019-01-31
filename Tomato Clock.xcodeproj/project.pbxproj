@@ -88,20 +88,20 @@
 		184D1ED021F1B1FA0075F444 /* ClockView */ = {
 			isa = PBXGroup;
 			children = (
-				184D1ED121F1B23D0075F444 /* Parts */,
+				184D1ED121F1B23D0075F444 /* Components */,
 				184D1ECD21F1B0B60075F444 /* ClockViewController.h */,
 				184D1ECE21F1B0B60075F444 /* ClockViewController.m */,
 			);
 			path = ClockView;
 			sourceTree = "<group>";
 		};
-		184D1ED121F1B23D0075F444 /* Parts */ = {
+		184D1ED121F1B23D0075F444 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				184D1ED221F1B27F0075F444 /* TimeDisplayLabel.h */,
 				184D1ED321F1B27F0075F444 /* TimeDisplayLabel.m */,
 			);
-			path = Parts;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		184D1ED521F1B9F10075F444 /* Util */ = {

@@ -12,13 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TimeTool : NSObject
 
-+ (int) getHoursFromSeconds: (int) seconds;
++ (NSInteger) getHoursFromSeconds: (NSInteger) seconds;
 
-+ (int) getMinutesRemainderFromSeconds: (int) seconds;
++ (NSInteger) getMinutesRemainderFromSeconds: (NSInteger) seconds;
 
-+ (int) getSecondsRemainderFromSeconds: (int) seconds;
++ (NSInteger) getSecondsRemainderFromSeconds: (NSInteger) seconds;
 
-+ (NSString*) getNormalizedCountdownString: (int) seconds;
++ (NSString*) getNormalizedCountdownString: (NSInteger) seconds;
 
 @end
 

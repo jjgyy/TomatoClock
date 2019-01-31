@@ -19,18 +19,15 @@
     return self;
 }
 
-- (void)setDisplayedSeconds:(int)seconds {
+- (void)setDisplayedSeconds:(NSInteger)seconds {
     _displayedSeconds = seconds;
     self.text = [TimeTool getNormalizedCountdownString: seconds];
 }
 
-- (int)displayedSeconds {
-    return _displayedSeconds;
-}
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"TimeDisplayLabel countDown: %d", self.displayedSeconds];
+    return [NSString stringWithFormat:@"TimeDisplayLabel countDown: %lu", self.displayedSeconds];
 }
 
 @end

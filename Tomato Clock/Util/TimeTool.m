@@ -10,40 +10,40 @@
 
 @implementation TimeTool
 
-+ (int)getHoursFromSeconds:(int)seconds {
++ (NSInteger)getHoursFromSeconds:(NSInteger)seconds {
     return seconds / 3600;
 }
 
-+ (int)getMinutesRemainderFromSeconds:(int)seconds {
++ (NSInteger)getMinutesRemainderFromSeconds:(NSInteger)seconds {
     return (seconds % 3600) / 60;
 }
 
-+ (int)getSecondsRemainderFromSeconds:(int)seconds {
++ (NSInteger)getSecondsRemainderFromSeconds:(NSInteger)seconds {
     return (seconds % 3600) % 60;
 }
 
-+ (NSString *)getNormalizedCountdownString:(int)seconds {
-    int hours = [self getHoursFromSeconds:seconds];
-    int minutesRemainder = [self getMinutesRemainderFromSeconds:seconds];
-    int secondsRemainder = [self getSecondsRemainderFromSeconds:seconds];
++ (NSString *)getNormalizedCountdownString:(NSInteger)seconds {
+    NSInteger hours = [self getHoursFromSeconds:seconds];
+    NSInteger minutesRemainder = [self getMinutesRemainderFromSeconds:seconds];
+    NSInteger secondsRemainder = [self getSecondsRemainderFromSeconds:seconds];
     NSString *result = @"";
     
     if (hours > 0) {
-        result = [result stringByAppendingString:[NSString stringWithFormat:@"%d:", hours]];
+        result = [result stringByAppendingString:[NSString stringWithFormat:@"%lu:", hours]];
     }
     
     if (minutesRemainder >= 10) {
-        result = [result stringByAppendingString:[NSString stringWithFormat:@"%d", minutesRemainder]];
+        result = [result stringByAppendingString:[NSString stringWithFormat:@"%lu", minutesRemainder]];
     } else if (minutesRemainder > 0 && hours > 0) {
-        result = [result stringByAppendingString:[NSString stringWithFormat:@"0%d", minutesRemainder]];
+        result = [result stringByAppendingString:[NSString stringWithFormat:@"0%lu", minutesRemainder]];
     } else if (minutesRemainder > 0 && hours == 0) {
-        result = [NSString stringWithFormat:@"%d", minutesRemainder];
+        result = [NSString stringWithFormat:@"%lu", minutesRemainder];
     }
     
     if (secondsRemainder < 10) {
-        result = [result stringByAppendingString:[NSString stringWithFormat:@":0%d", secondsRemainder]];
+        result = [result stringByAppendingString:[NSString stringWithFormat:@":0%lu", secondsRemainder]];
     } else {
-        result = [result stringByAppendingString:[NSString stringWithFormat:@":%d", secondsRemainder]];
+        result = [result stringByAppendingString:[NSString stringWithFormat:@":%lu", secondsRemainder]];
     }
     return result;
 }
