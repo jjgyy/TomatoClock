@@ -62,7 +62,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qhm-S0-Jom">
-                                <rect key="frame" x="162" y="601" width="50" height="30"/>
+                                <rect key="frame" x="162.5" y="601" width="50" height="30"/>
                                 <state key="normal" title="Restart"/>
                                 <connections>
                                     <action selector="clickReset:" destination="Xz7-M9-DnZ" eventType="touchUpInside" id="RnA-6q-Flh"/>
@@ -84,14 +84,94 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="u5u-lL-KEB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="DmH-g0-R5Q"/>
+                    <navigationItem key="navigationItem" id="DmH-g0-R5Q">
+                        <barButtonItem key="rightBarButtonItem" title="Setting" id="f22-We-hwb">
+                            <connections>
+                                <segue destination="PmX-uI-yjR" kind="show" id="GZY-r4-ntv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="timeDisplayLabel" destination="FYU-tp-3At" id="RJl-rg-er8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C8q-lt-cMn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="741.60000000000002" y="-288.30584707646182"/>
+            <point key="canvasLocation" x="465" y="-288"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="VeY-oJ-5sT">
+            <objects>
+                <viewController id="PmX-uI-yjR" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8j5-8e-A4y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIM-QD-7YU">
+                                <rect key="frame" x="144" y="105" width="87" height="30"/>
+                                <state key="normal" title="Time Setting"/>
+                                <connections>
+                                    <segue destination="Rxd-px-uVp" kind="show" id="3aH-dT-1NH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kIM-QD-7YU" firstAttribute="centerX" secondItem="Fg9-3U-8TR" secondAttribute="centerX" id="cbr-mA-bVh"/>
+                            <constraint firstItem="kIM-QD-7YU" firstAttribute="top" secondItem="Fg9-3U-8TR" secondAttribute="top" constant="41" id="cph-3y-1yX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Fg9-3U-8TR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="33S-0a-B0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1288.8" y="-288.30584707646182"/>
+        </scene>
+        <!--Max Countdown Setting View-->
+        <scene sceneID="uDV-is-drg">
+            <objects>
+                <viewController id="Rxd-px-uVp" customClass="MaxCountdownSettingView" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="krl-1F-AoT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCe-c1-qP4">
+                                <rect key="frame" x="167" y="112" width="41" height="30"/>
+                                <state key="normal" title="25:00"/>
+                                <connections>
+                                    <action selector="click25:" destination="Rxd-px-uVp" eventType="touchUpInside" id="wpX-ov-uuV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mve-eR-uf3">
+                                <rect key="frame" x="166.5" y="199" width="42" height="30"/>
+                                <state key="normal" title="30:00"/>
+                                <connections>
+                                    <action selector="click30:" destination="Rxd-px-uVp" eventType="touchUpInside" id="YMs-9M-EOT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnK-op-cZW">
+                                <rect key="frame" x="166.5" y="291" width="42" height="30"/>
+                                <state key="normal" title="45:00"/>
+                                <connections>
+                                    <action selector="click45:" destination="Rxd-px-uVp" eventType="touchUpInside" id="BEP-Fq-aRB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Mve-eR-uf3" firstAttribute="centerX" secondItem="Fhc-49-G7b" secondAttribute="centerX" id="2qZ-Q2-FKe"/>
+                            <constraint firstItem="WCe-c1-qP4" firstAttribute="top" secondItem="Fhc-49-G7b" secondAttribute="top" constant="48" id="6gF-IW-U6D"/>
+                            <constraint firstItem="fnK-op-cZW" firstAttribute="centerX" secondItem="Fhc-49-G7b" secondAttribute="centerX" id="FLB-BD-1Qa"/>
+                            <constraint firstItem="Mve-eR-uf3" firstAttribute="top" secondItem="Fhc-49-G7b" secondAttribute="top" constant="135" id="Otw-el-2Fx"/>
+                            <constraint firstItem="fnK-op-cZW" firstAttribute="top" secondItem="Fhc-49-G7b" secondAttribute="top" constant="227" id="Z9G-h5-M2R"/>
+                            <constraint firstItem="WCe-c1-qP4" firstAttribute="centerX" secondItem="Fhc-49-G7b" secondAttribute="centerX" id="vvh-Cd-IWb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Fhc-49-G7b"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hbE-fQ-nYt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2426" y="-1187"/>
         </scene>
     </scenes>
 </document>

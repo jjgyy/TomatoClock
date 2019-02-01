@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18311A1B2204890B00ACA136 /* MaxCountdownSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18311A1A2204890B00ACA136 /* MaxCountdownSettingView.m */; };
+		18311A1E22048A3300ACA136 /* SettingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18311A1D22048A3300ACA136 /* SettingTool.m */; };
 		184D1EB821F1A52C0075F444 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D1EB721F1A52C0075F444 /* AppDelegate.m */; };
 		184D1EBE21F1A52C0075F444 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184D1EBC21F1A52C0075F444 /* Main.storyboard */; };
 		184D1EC021F1A52E0075F444 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184D1EBF21F1A52E0075F444 /* Assets.xcassets */; };
@@ -18,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18311A192204890B00ACA136 /* MaxCountdownSettingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaxCountdownSettingView.h; sourceTree = "<group>"; };
+		18311A1A2204890B00ACA136 /* MaxCountdownSettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MaxCountdownSettingView.m; sourceTree = "<group>"; };
+		18311A1C22048A3300ACA136 /* SettingTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingTool.h; sourceTree = "<group>"; };
+		18311A1D22048A3300ACA136 /* SettingTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingTool.m; sourceTree = "<group>"; };
 		184D1EB321F1A52C0075F444 /* Tomato Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tomato Clock.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		184D1EB621F1A52C0075F444 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		184D1EB721F1A52C0075F444 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -45,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18311A182204884400ACA136 /* Setting-Max Countdown */ = {
+			isa = PBXGroup;
+			children = (
+				18311A192204890B00ACA136 /* MaxCountdownSettingView.h */,
+				18311A1A2204890B00ACA136 /* MaxCountdownSettingView.m */,
+			);
+			path = "Setting-Max Countdown";
+			sourceTree = "<group>";
+		};
 		184D1EAA21F1A52C0075F444 = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +95,7 @@
 		184D1ECC21F1B0920075F444 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				18311A182204884400ACA136 /* Setting-Max Countdown */,
 				184D1ED021F1B1FA0075F444 /* ClockView */,
 			);
 			path = Controller;
@@ -109,6 +125,8 @@
 			children = (
 				184D1ED621F1BA420075F444 /* TimeTool.h */,
 				184D1ED721F1BA420075F444 /* TimeTool.m */,
+				18311A1C22048A3300ACA136 /* SettingTool.h */,
+				18311A1D22048A3300ACA136 /* SettingTool.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -185,9 +203,11 @@
 			files = (
 				184D1ED821F1BA420075F444 /* TimeTool.m in Sources */,
 				184D1EC621F1A52E0075F444 /* main.m in Sources */,
+				18311A1B2204890B00ACA136 /* MaxCountdownSettingView.m in Sources */,
 				184D1ED421F1B27F0075F444 /* TimeDisplayLabel.m in Sources */,
 				184D1EB821F1A52C0075F444 /* AppDelegate.m in Sources */,
 				184D1ECF21F1B0B60075F444 /* ClockViewController.m in Sources */,
+				18311A1E22048A3300ACA136 /* SettingTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

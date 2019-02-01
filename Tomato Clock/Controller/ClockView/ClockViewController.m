@@ -8,6 +8,7 @@
 
 #import "ClockViewController.h"
 #import "TimeDisplayLabel.h"
+#import "SettingTool.h"
 
 @interface ClockViewController ()
 
@@ -35,13 +36,18 @@ typedef enum {
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.countdownState = IsReady;
-    
-    NSInteger settingCountdownMaxSeconds = 65;
-    self.maxCountdownSeconds = settingCountdownMaxSeconds;
+    [self setMaxCountdownSecondsWithSetting];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(setMaxCountdownSecondsWithSetting) name:@"resetMaxCountdown" object:nil];
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setCountdownMaxSecondsWithNotification:) name:@"setCountdownMaxSeconds" object:nil];
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"setCountdownMaxSeconds" object:@{@"countdownMaxSeconds": [NSNumber numberWithInt:20*60]}];
 }
+
+
+- (void)setMaxCountdownSecondsWithSetting {
+    self.maxCountdownSeconds = [SettingTool maxCountdownSeconds];
+}
+
 
 - (void)setMaxCountdownSeconds:(NSInteger)maxCountdownSeconds {
     self->_maxCountdownSeconds = maxCountdownSeconds;
