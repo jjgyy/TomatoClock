@@ -150,10 +150,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnK-op-cZW">
-                                <rect key="frame" x="166.5" y="291" width="42" height="30"/>
-                                <state key="normal" title="45:00"/>
+                                <rect key="frame" x="172.5" y="291" width="30" height="30"/>
+                                <state key="normal" title=":10"/>
                                 <connections>
-                                    <action selector="click45:" destination="Rxd-px-uVp" eventType="touchUpInside" id="BEP-Fq-aRB"/>
+                                    <action selector="click0010:" destination="Rxd-px-uVp" eventType="touchUpInside" id="BEP-Fq-aRB"/>
                                 </connections>
                             </button>
                         </subviews>

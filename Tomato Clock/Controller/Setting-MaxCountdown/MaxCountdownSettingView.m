@@ -7,12 +7,12 @@
 //
 
 #import "MaxCountdownSettingView.h"
-#import "SettingTool.h"
+#import "UserDefaultsTool.h"
 
 @interface MaxCountdownSettingView ()
 - (IBAction)click25:(UIButton *)sender;
 - (IBAction)click30:(UIButton *)sender;
-- (IBAction)click45:(UIButton *)sender;
+- (IBAction)click0010:(UIButton *)sender;
 
 @end
 
@@ -27,17 +27,17 @@
 }
 
 - (IBAction)click25:(UIButton *)sender {
-    [SettingTool setMaxCountdownSeconds: 25 * 60];
+    [UserDefaultsTool setMaxCountdownSeconds: 25 * 60];
     [self postNotification];
 }
 
 - (IBAction)click30:(UIButton *)sender {
-    [SettingTool setMaxCountdownSeconds: 30 * 60];
+    [UserDefaultsTool setMaxCountdownSeconds: 30 * 60];
     [self postNotification];
 }
 
-- (IBAction)click45:(UIButton *)sender {
-    [SettingTool setMaxCountdownSeconds: 45 * 60];
+- (IBAction)click0010:(UIButton *)sender {
+    [UserDefaultsTool setMaxCountdownSeconds: 10];
     [self postNotification];
 }
 @end

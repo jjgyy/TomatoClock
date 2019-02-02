@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "SettingTool.h"
+#import "UserDefaultsTool.h"
+#import "UserNotificationTool.h"
 
 @interface AppDelegate ()
 
@@ -17,7 +18,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [SettingTool initSettingForFirstLaunch];
+    [UserDefaultsTool initUserDefaultsForFirstLaunch];
+    [UserNotificationTool requestAuthorizationForFirstLaunch];
     return YES;
 }
 

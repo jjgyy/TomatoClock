@@ -1,5 +1,5 @@
 //
-//  SettingTool.h
+//  UserDefaultsTool.h
 //  Tomato Clock
 //
 //  Created by Apple on 2019/2/1.
@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SettingTool : NSObject
+@interface UserDefaultsTool : NSObject
 
-+(void) initSettingForFirstLaunch;
++(void) initUserDefaultsForFirstLaunch;
 
 +(void) setMaxCountdownSeconds: (NSInteger) maxCountdownSeconds;
 

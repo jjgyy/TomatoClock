@@ -1,17 +1,17 @@
 //
-//  SettingTool.m
+//  UserDefaultsTool.m
 //  Tomato Clock
 //
 //  Created by Apple on 2019/2/1.
 //  Copyright © 2019 Young. All rights reserved.
 //
 
-#import "SettingTool.h"
+#import "UserDefaultsTool.h"
 
-@implementation SettingTool
+@implementation UserDefaultsTool
 
 
-+(void)initSettingForFirstLaunch {
++(void)initUserDefaultsForFirstLaunch {
     Boolean hasFirstLaunched = [NSUserDefaults.standardUserDefaults boolForKey: @"hasFirstLaunched"];
     if (!hasFirstLaunched) {
         [NSUserDefaults.standardUserDefaults setBool: true forKey: @"hasFirstLaunched"];
