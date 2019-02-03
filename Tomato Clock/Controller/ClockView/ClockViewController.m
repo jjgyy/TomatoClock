@@ -9,6 +9,7 @@
 #import "ClockViewController.h"
 #import "TimeDisplayLabel.h"
 #import "UserDefaultsTool.h"
+#import "UserNotificationTool.h"
 
 @interface ClockViewController ()
 
@@ -65,6 +66,8 @@ typedef enum {
 
 - (void)startCountdown {
     self.countdownState = IsRunning;
+    [UserNotificationTool addCountdownOverNotificationWithInterval: self.leftCountdownSeconds];
+    
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     self.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     dispatch_source_set_timer(self.timer, dispatch_walltime(NULL, 0), 1.0 * NSEC_PER_SEC, 0);
@@ -83,12 +86,13 @@ typedef enum {
         }
     });
     dispatch_resume(self.timer);
-    
 }
 
 
 - (void)pauseCountdown {
     self.countdownState = IsPaused;
+    [UserNotificationTool removeCountdownOverNotification];
+    
     dispatch_source_cancel(self.timer);
 }
 

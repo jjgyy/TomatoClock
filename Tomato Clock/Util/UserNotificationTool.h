@@ -14,6 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(void) requestAuthorizationForFirstLaunch;
 
++(void) addCountdownOverNotificationWithInterval: (NSInteger)seconds;
+
++(void) removeCountdownOverNotification;
+
 @end
 
 NS_ASSUME_NONNULL_END
