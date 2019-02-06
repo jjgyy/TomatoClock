@@ -10,19 +10,28 @@
 
 @implementation TimeTool
 
-+(NSInteger)hoursFromSeconds:(NSInteger)seconds {
+static TimeTool *_sharedTimeTool;
+
++ (TimeTool *)sharedTimeTool {
+    if (!_sharedTimeTool) {
+        _sharedTimeTool = [TimeTool new];
+    }
+    return _sharedTimeTool;
+}
+
+- (NSInteger)hoursFromSeconds:(NSInteger)seconds {
     return seconds / 3600;
 }
 
-+(NSInteger)minutesRemainderFromSeconds:(NSInteger)seconds {
+- (NSInteger)minutesRemainderFromSeconds:(NSInteger)seconds {
     return (seconds % 3600) / 60;
 }
 
-+(NSInteger)secondsRemainderFromSeconds:(NSInteger)seconds {
+- (NSInteger)secondsRemainderFromSeconds:(NSInteger)seconds {
     return (seconds % 3600) % 60;
 }
 
-+(NSString *)normalizedCountdownString:(NSInteger)seconds {
+- (NSString *)normalizedCountdownString:(NSInteger)seconds {
     NSInteger hours = [self hoursFromSeconds:seconds];
     NSInteger minutesRemainder = [self minutesRemainderFromSeconds:seconds];
     NSInteger secondsRemainder = [self secondsRemainderFromSeconds:seconds];

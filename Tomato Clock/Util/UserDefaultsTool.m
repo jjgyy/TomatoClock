@@ -10,8 +10,17 @@
 
 @implementation UserDefaultsTool
 
+static UserDefaultsTool *_sharedUserDefaultsTool;
 
-+(void)initUserDefaultsForFirstLaunch {
++ (UserDefaultsTool *)sharedUserDefaultsTool {
+    if (!_sharedUserDefaultsTool) {
+        _sharedUserDefaultsTool = [UserDefaultsTool new];
+    }
+    return _sharedUserDefaultsTool;
+}
+
+
+- (void)initUserDefaultsForFirstLaunch {
     Boolean hasFirstLaunched = [NSUserDefaults.standardUserDefaults boolForKey: @"hasFirstLaunched"];
     if (!hasFirstLaunched) {
         [NSUserDefaults.standardUserDefaults setBool: true forKey: @"hasFirstLaunched"];
@@ -20,7 +29,7 @@
 }
 
 
-+(void)setMaxCountdownSeconds: (NSInteger) maxCountdownSeconds {
+- (void)setMaxCountdownSeconds: (NSInteger) maxCountdownSeconds {
     if (maxCountdownSeconds <= 0) {
         NSLog(@"maxCountdownSeconds = %ld, should be positive.", maxCountdownSeconds);
         return;
@@ -29,7 +38,7 @@
 }
 
 
-+(NSInteger)maxCountdownSeconds {
+- (NSInteger)maxCountdownSeconds {
     return [NSUserDefaults.standardUserDefaults integerForKey: @"maxCountdownSeconds"];
 }
 

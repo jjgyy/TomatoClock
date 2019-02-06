@@ -27,17 +27,17 @@
 }
 
 - (IBAction)click25:(UIButton *)sender {
-    [UserDefaultsTool setMaxCountdownSeconds: 25 * 60];
+    [UserDefaultsTool.sharedUserDefaultsTool setMaxCountdownSeconds: 25 * 60];
     [self postNotification];
 }
 
 - (IBAction)click30:(UIButton *)sender {
-    [UserDefaultsTool setMaxCountdownSeconds: 30 * 60];
+    [UserDefaultsTool.sharedUserDefaultsTool setMaxCountdownSeconds: 30 * 60];
     [self postNotification];
 }
 
 - (IBAction)click0010:(UIButton *)sender {
-    [UserDefaultsTool setMaxCountdownSeconds: 10];
+    [UserDefaultsTool.sharedUserDefaultsTool setMaxCountdownSeconds: 10];
     [self postNotification];
 }
 @end

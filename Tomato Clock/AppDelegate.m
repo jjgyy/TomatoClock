@@ -18,8 +18,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [UserDefaultsTool initUserDefaultsForFirstLaunch];
-    [UserNotificationTool requestAuthorizationForFirstLaunch];
+    [UserDefaultsTool.sharedUserDefaultsTool initUserDefaultsForFirstLaunch];
+    [UserNotificationTool.sharedUserNotificationTool requestAuthorizationForFirstLaunch];
     return YES;
 }
 

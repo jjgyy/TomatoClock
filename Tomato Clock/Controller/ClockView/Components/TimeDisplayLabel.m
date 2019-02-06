@@ -21,7 +21,7 @@
 
 - (void)setDisplayedSeconds:(NSInteger)seconds {
     _displayedSeconds = seconds;
-    self.text = [TimeTool normalizedCountdownString: seconds];
+    self.text = [TimeTool.sharedTimeTool normalizedCountdownString: seconds];
 }
 
 

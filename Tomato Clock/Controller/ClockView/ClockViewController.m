@@ -46,7 +46,7 @@ typedef enum {
 
 
 - (void)setMaxCountdownSecondsWithUserDefaults {
-    self.maxCountdownSeconds = [UserDefaultsTool maxCountdownSeconds];
+    self.maxCountdownSeconds = [UserDefaultsTool.sharedUserDefaultsTool maxCountdownSeconds];
 }
 
 
@@ -66,7 +66,7 @@ typedef enum {
 
 - (void)startCountdown {
     self.countdownState = IsRunning;
-    [UserNotificationTool addCountdownOverNotificationWithInterval: self.leftCountdownSeconds];
+    [UserNotificationTool.sharedUserNotificationTool addCountdownOverNotificationWithInterval: self.leftCountdownSeconds];
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     self.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
@@ -91,7 +91,7 @@ typedef enum {
 
 - (void)pauseCountdown {
     self.countdownState = IsPaused;
-    [UserNotificationTool removeCountdownOverNotification];
+    [UserNotificationTool.sharedUserNotificationTool removeCountdownOverNotification];
     
     dispatch_source_cancel(self.timer);
 }

@@ -7,16 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UserNotifications/UserNotifications.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UserNotificationTool : NSObject
+@interface UserNotificationTool : NSObject<UNUserNotificationCenterDelegate>
 
-+(void) requestAuthorizationForFirstLaunch;
+@property (class, nonatomic, readonly, strong) UserNotificationTool *sharedUserNotificationTool;
 
-+(void) addCountdownOverNotificationWithInterval: (NSInteger)seconds;
+- (void)requestAuthorizationForFirstLaunch;
 
-+(void) removeCountdownOverNotification;
+- (void)addCountdownOverNotificationWithInterval: (NSInteger)seconds;
+
+- (void)removeCountdownOverNotification;
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler;
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler;
 
 @end
 

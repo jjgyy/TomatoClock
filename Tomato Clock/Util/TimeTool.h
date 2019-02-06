@@ -12,13 +12,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TimeTool : NSObject
 
-+(NSInteger) hoursFromSeconds: (NSInteger) seconds;
+@property (class, nonatomic, readonly, strong) TimeTool *sharedTimeTool;
 
-+(NSInteger) minutesRemainderFromSeconds: (NSInteger) seconds;
+- (NSInteger)hoursFromSeconds: (NSInteger) seconds;
 
-+(NSInteger) secondsRemainderFromSeconds: (NSInteger) seconds;
+- (NSInteger)minutesRemainderFromSeconds: (NSInteger) seconds;
 
-+(NSString*) normalizedCountdownString: (NSInteger) seconds;
+- (NSInteger)secondsRemainderFromSeconds: (NSInteger) seconds;
+
+- (NSString*)normalizedCountdownString: (NSInteger) seconds;
 
 @end
 

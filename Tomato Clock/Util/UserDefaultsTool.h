@@ -12,11 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UserDefaultsTool : NSObject
 
-+(void) initUserDefaultsForFirstLaunch;
+@property (class, nonatomic, readonly, strong) UserDefaultsTool *sharedUserDefaultsTool;
 
-+(void) setMaxCountdownSeconds: (NSInteger) maxCountdownSeconds;
+- (void)initUserDefaultsForFirstLaunch;
 
-+(NSInteger) maxCountdownSeconds;
+- (void)setMaxCountdownSeconds: (NSInteger) maxCountdownSeconds;
+
+- (NSInteger)maxCountdownSeconds;
 
 @end
 
