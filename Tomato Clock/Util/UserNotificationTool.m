@@ -23,7 +23,7 @@ static UserNotificationTool *_sharedUserNotificationTool;
 
 - (void)requestAuthorizationForFirstLaunch {
     UNUserNotificationCenter *center = UNUserNotificationCenter.currentNotificationCenter;
-    center.delegate = (UserNotificationTool *)self;
+    center.delegate = self;
     [center requestAuthorizationWithOptions: (UNAuthorizationOptionAlert + UNAuthorizationOptionSound + UNAuthorizationOptionBadge) completionHandler: ^(BOOL granted, NSError * _Nullable __strong error){
         // TODO: add something
     }];
@@ -31,6 +31,7 @@ static UserNotificationTool *_sharedUserNotificationTool;
 
 
 - (void)addCountdownOverNotificationWithInterval: (NSInteger)seconds {
+    if (seconds <= 0) { return; }
     UNMutableNotificationContent* content = [UNMutableNotificationContent new];
     content.title = [NSString localizedUserNotificationStringForKey:@"完成番茄时" arguments:nil];
     content.body = [NSString localizedUserNotificationStringForKey:@"点击查看" arguments:nil];

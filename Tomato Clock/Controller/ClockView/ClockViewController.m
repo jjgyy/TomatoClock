@@ -65,13 +65,15 @@ typedef enum {
 
 
 - (void)startCountdown {
+    if (self.leftCountdownSeconds <= 0) { return; }
     self.countdownState = IsRunning;
     [UserNotificationTool.sharedUserNotificationTool addCountdownOverNotificationWithInterval: self.leftCountdownSeconds];
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     self.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-    dispatch_source_set_timer(self.timer, dispatch_walltime(NULL, 0), 1.0 * NSEC_PER_SEC, 0);
+    dispatch_source_set_timer(self.timer, DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC, 0);
     dispatch_source_set_event_handler(self.timer, ^{
+        self.leftCountdownSeconds --;
         if (self.leftCountdownSeconds <= 0) {
             dispatch_sync(dispatch_get_main_queue(), ^{
                 [self setLabelDisplayedSeconds: self.leftCountdownSeconds];
@@ -82,7 +84,6 @@ typedef enum {
             dispatch_sync(dispatch_get_main_queue(), ^{
                 [self setLabelDisplayedSeconds: self.leftCountdownSeconds];
             });
-            self.leftCountdownSeconds --;
         }
     });
     dispatch_resume(self.timer);
