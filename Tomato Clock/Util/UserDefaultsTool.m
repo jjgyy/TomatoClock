@@ -21,12 +21,13 @@ static UserDefaultsTool *_sharedUserDefaultsTool;
 
 
 - (void)initUserDefaultsForFirstLaunch {
-    Boolean hasFirstLaunched = [NSUserDefaults.standardUserDefaults boolForKey: @"hasFirstLaunched"];
+    BOOL hasFirstLaunched = [NSUserDefaults.standardUserDefaults boolForKey: @"hasFirstLaunched"];
     if (!hasFirstLaunched) {
-        [NSUserDefaults.standardUserDefaults setBool: true forKey: @"hasFirstLaunched"];
+        [NSUserDefaults.standardUserDefaults setBool: YES forKey: @"hasFirstLaunched"];
         [NSUserDefaults.standardUserDefaults setInteger: 25 * 60 forKey: @"maxCountdownSeconds"];
     }
 }
+
 
 
 - (void)setMaxCountdownSeconds: (NSInteger) maxCountdownSeconds {
@@ -37,9 +38,30 @@ static UserDefaultsTool *_sharedUserDefaultsTool;
     [NSUserDefaults.standardUserDefaults setInteger: maxCountdownSeconds forKey: @"maxCountdownSeconds"];
 }
 
-
 - (NSInteger)maxCountdownSeconds {
     return [NSUserDefaults.standardUserDefaults integerForKey: @"maxCountdownSeconds"];
+}
+
+
+
+- (void)setCountdownState: (NSInteger) countdownState {
+    [NSUserDefaults.standardUserDefaults setInteger: countdownState forKey: @"countdownState"];
+}
+
+- (NSInteger)countdownState {
+    return [NSUserDefaults.standardUserDefaults integerForKey: @"countdownState"];
+}
+
+
+
+- (void)setCountdownOverDate: (NSDate *) countdownOverDate {
+    NSTimeInterval timeInterval = [countdownOverDate timeIntervalSince1970];
+    [NSUserDefaults.standardUserDefaults setDouble: timeInterval forKey: @"countdownOverDate"];
+}
+
+- (NSDate *)countdownOverDate {
+    NSTimeInterval timeInterval = [NSUserDefaults.standardUserDefaults doubleForKey: @"countdownOverDate"];
+    return [NSDate dateWithTimeIntervalSince1970: timeInterval];
 }
 
 @end

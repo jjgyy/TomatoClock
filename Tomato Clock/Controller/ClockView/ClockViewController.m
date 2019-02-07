@@ -14,10 +14,10 @@
 @interface ClockViewController ()
 
 typedef enum {
-    IsReady,
-    IsRunning,
-    IsPaused,
-    IsOver
+    IsReady = 0,
+    IsRunning = 1,
+    IsPaused = 2,
+    IsOver = 3
 } CountdownState;
 @property (nonatomic, assign) CountdownState countdownState;
 @property (nonatomic, assign) NSInteger maxCountdownSeconds;
@@ -38,17 +38,39 @@ typedef enum {
     [super viewDidLoad];
     self.countdownState = IsReady;
     [self setMaxCountdownSecondsWithUserDefaults];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationDidBecomeActive) name:@"applicationDidBecomeActive" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationWillResignActive) name:@"applicationWillResignActive" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(setMaxCountdownSecondsWithUserDefaults) name:@"resetMaxCountdown" object:nil];
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setCountdownMaxSecondsWithNotification:) name:@"setCountdownMaxSeconds" object:nil];
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"setCountdownMaxSeconds" object:@{@"countdownMaxSeconds": [NSNumber numberWithInt:20*60]}];
 }
 
+- (void)applicationDidBecomeActive {
+    self.countdownState = (CountdownState)[UserDefaultsTool.sharedUserDefaultsTool countdownState];
+    if (self.countdownState == IsRunning) {
+        NSDate *countdownOverDate = [UserDefaultsTool.sharedUserDefaultsTool countdownOverDate];
+        NSInteger leftCountdownSeconds = [countdownOverDate timeIntervalSinceNow];
+        if (leftCountdownSeconds <= 0) {
+            self.countdownState = IsOver;
+            self.leftCountdownSeconds = 0;
+            [self setLabelDisplayedSeconds: 0];
+        } else {
+            self.leftCountdownSeconds = leftCountdownSeconds;
+            [self startCountdown];
+        }
+    }
+}
+
+
+- (void)applicationWillResignActive {
+    [self cancelTimer];
+}
+
 
 - (void)setMaxCountdownSecondsWithUserDefaults {
     self.maxCountdownSeconds = [UserDefaultsTool.sharedUserDefaultsTool maxCountdownSeconds];
 }
-
 
 - (void)setMaxCountdownSeconds:(NSInteger)maxCountdownSeconds {
     self->_maxCountdownSeconds = maxCountdownSeconds;
@@ -58,15 +80,24 @@ typedef enum {
     }
 }
 
-
 - (void)setLabelDisplayedSeconds:(NSInteger)seconds {
     self.timeDisplayLabel.displayedSeconds = seconds;
+}
+
+- (void)cancelTimer {
+    if (self.timer) {
+        dispatch_source_cancel(self.timer);
+    }
 }
 
 
 - (void)startCountdown {
     if (self.leftCountdownSeconds <= 0) { return; }
     self.countdownState = IsRunning;
+    
+    [UserDefaultsTool.sharedUserDefaultsTool setCountdownState: self.countdownState];
+    [UserDefaultsTool.sharedUserDefaultsTool setCountdownOverDate: [NSDate dateWithTimeIntervalSinceNow: self.leftCountdownSeconds]];
+    
     [UserNotificationTool.sharedUserNotificationTool addCountdownOverNotificationWithInterval: self.leftCountdownSeconds];
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -79,7 +110,7 @@ typedef enum {
                 [self setLabelDisplayedSeconds: self.leftCountdownSeconds];
                 self.countdownState = IsOver;
             });
-            dispatch_source_cancel(self.timer);
+            [self cancelTimer];
         } else {
             dispatch_sync(dispatch_get_main_queue(), ^{
                 [self setLabelDisplayedSeconds: self.leftCountdownSeconds];
@@ -92,15 +123,17 @@ typedef enum {
 
 - (void)pauseCountdown {
     self.countdownState = IsPaused;
+    [UserDefaultsTool.sharedUserDefaultsTool setCountdownState: IsPaused];
     [UserNotificationTool.sharedUserNotificationTool removeCountdownOverNotification];
     
-    dispatch_source_cancel(self.timer);
+    [self cancelTimer];
 }
 
 
 - (void)endCountdown {
     self.countdownState = IsOver;
-    dispatch_source_cancel(self.timer);
+    [UserDefaultsTool.sharedUserDefaultsTool setCountdownState: IsOver];
+    [self cancelTimer];
     self.leftCountdownSeconds = 0;
     [self setLabelDisplayedSeconds: 0];
 }
@@ -108,7 +141,8 @@ typedef enum {
 
 - (void)resetCountdown {
     self.countdownState = IsReady;
-    dispatch_source_cancel(self.timer);
+    [UserDefaultsTool.sharedUserDefaultsTool setCountdownState: IsReady];
+    [self cancelTimer];
     self.leftCountdownSeconds = self.maxCountdownSeconds;
     [self setLabelDisplayedSeconds: self.maxCountdownSeconds];
 }

@@ -20,6 +20,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSInteger)maxCountdownSeconds;
 
+- (void)setCountdownState: (NSInteger) countdownState;
+
+- (NSInteger)countdownState;
+
+- (void)setCountdownOverDate: (NSDate *) countdownOverDate;
+
+- (NSDate *)countdownOverDate;
+
 @end
 
 NS_ASSUME_NONNULL_END
