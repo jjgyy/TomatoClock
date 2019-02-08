@@ -36,21 +36,17 @@ typedef enum {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.countdownState = IsReady;
     [self setMaxCountdownSecondsWithUserDefaults];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationDidBecomeActive) name:@"applicationDidBecomeActive" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationWillResignActive) name:@"applicationWillResignActive" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(setMaxCountdownSecondsWithUserDefaults) name:@"resetMaxCountdown" object:nil];
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setCountdownMaxSecondsWithNotification:) name:@"setCountdownMaxSeconds" object:nil];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"setCountdownMaxSeconds" object:@{@"countdownMaxSeconds": [NSNumber numberWithInt:20*60]}];
 }
+
 
 - (void)applicationDidBecomeActive {
     self.countdownState = (CountdownState)[UserDefaultsTool.sharedUserDefaultsTool countdownState];
     if (self.countdownState == IsRunning) {
-        NSDate *countdownOverDate = [UserDefaultsTool.sharedUserDefaultsTool countdownOverDate];
-        NSInteger leftCountdownSeconds = [countdownOverDate timeIntervalSinceNow];
+        NSInteger leftCountdownSeconds = [UserDefaultsTool.sharedUserDefaultsTool leftCountdownSeconds];
         if (leftCountdownSeconds <= 0) {
             self.countdownState = IsOver;
             self.leftCountdownSeconds = 0;
@@ -84,22 +80,8 @@ typedef enum {
     self.timeDisplayLabel.displayedSeconds = seconds;
 }
 
-- (void)cancelTimer {
-    if (self.timer) {
-        dispatch_source_cancel(self.timer);
-    }
-}
 
-
-- (void)startCountdown {
-    if (self.leftCountdownSeconds <= 0) { return; }
-    self.countdownState = IsRunning;
-    
-    [UserDefaultsTool.sharedUserDefaultsTool setCountdownState: self.countdownState];
-    [UserDefaultsTool.sharedUserDefaultsTool setCountdownOverDate: [NSDate dateWithTimeIntervalSinceNow: self.leftCountdownSeconds]];
-    
-    [UserNotificationTool.sharedUserNotificationTool addCountdownOverNotificationWithInterval: self.leftCountdownSeconds];
-    
+- (void)startTimer {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     self.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     dispatch_source_set_timer(self.timer, DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC, 0);
@@ -120,12 +102,28 @@ typedef enum {
     dispatch_resume(self.timer);
 }
 
+- (void)cancelTimer {
+    if (self.timer) {
+        dispatch_source_cancel(self.timer);
+        self.timer = nil;
+    }
+}
+
+
+- (void)startCountdown {
+    if (self.leftCountdownSeconds <= 0) { return; }
+    self.countdownState = IsRunning;
+    [UserDefaultsTool.sharedUserDefaultsTool setCountdownState: self.countdownState];
+    [UserDefaultsTool.sharedUserDefaultsTool setLeftCountdownSeconds: self.leftCountdownSeconds];
+    [UserNotificationTool.sharedUserNotificationTool addCountdownOverNotificationWithInterval: self.leftCountdownSeconds];
+    [self startTimer];
+}
+
 
 - (void)pauseCountdown {
     self.countdownState = IsPaused;
     [UserDefaultsTool.sharedUserDefaultsTool setCountdownState: IsPaused];
     [UserNotificationTool.sharedUserNotificationTool removeCountdownOverNotification];
-    
     [self cancelTimer];
 }
 
@@ -147,12 +145,6 @@ typedef enum {
     [self setLabelDisplayedSeconds: self.maxCountdownSeconds];
 }
 
-
-//- (void)setCountdownMaxSecondsWithNotification: (NSNotification *) notification {
-//    NSDictionary *notificationDic = [notification object];
-//    NSNumber *newCountdownMaxSeconds = [notificationDic valueForKey:@"countdownMaxSeconds"];
-//    [self setCountdownMaxSeconds:[newCountdownMaxSeconds intValue]];
-//}
 
 - (IBAction)clickStart:(UIButton *)sender {
     [self startCountdown];

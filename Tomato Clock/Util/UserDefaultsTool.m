@@ -54,14 +54,16 @@ static UserDefaultsTool *_sharedUserDefaultsTool;
 
 
 
-- (void)setCountdownOverDate: (NSDate *) countdownOverDate {
-    NSTimeInterval timeInterval = [countdownOverDate timeIntervalSince1970];
-    [NSUserDefaults.standardUserDefaults setDouble: timeInterval forKey: @"countdownOverDate"];
+- (void)setLeftCountdownSeconds: (NSInteger) leftCountdownSeconds {
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow: leftCountdownSeconds];
+    NSInteger timeIntervalSince1970 = [date timeIntervalSince1970];
+    [NSUserDefaults.standardUserDefaults setInteger: timeIntervalSince1970 forKey: @"leftCountdownSeconds"];
 }
 
-- (NSDate *)countdownOverDate {
-    NSTimeInterval timeInterval = [NSUserDefaults.standardUserDefaults doubleForKey: @"countdownOverDate"];
-    return [NSDate dateWithTimeIntervalSince1970: timeInterval];
+- (NSInteger) leftCountdownSeconds {
+    NSInteger timeIntervalSince1970 = [NSUserDefaults.standardUserDefaults integerForKey: @"leftCountdownSeconds"];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970: timeIntervalSince1970];
+    return [date timeIntervalSinceNow];
 }
 
 @end

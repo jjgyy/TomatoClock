@@ -24,9 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSInteger)countdownState;
 
-- (void)setCountdownOverDate: (NSDate *) countdownOverDate;
+- (void)setLeftCountdownSeconds: (NSInteger) leftCountdownSeconds;
 
-- (NSDate *)countdownOverDate;
+- (NSInteger) leftCountdownSeconds;
 
 @end
 
