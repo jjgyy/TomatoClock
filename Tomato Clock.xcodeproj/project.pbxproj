@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18311A1B2204890B00ACA136 /* MaxCountdownSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18311A1A2204890B00ACA136 /* MaxCountdownSettingView.m */; };
+		18311A1B2204890B00ACA136 /* MaxCountdownSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18311A1A2204890B00ACA136 /* MaxCountdownSettingViewController.m */; };
 		18311A1E22048A3300ACA136 /* UserDefaultsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18311A1D22048A3300ACA136 /* UserDefaultsTool.m */; };
 		18311A242205CD6600ACA136 /* UserNotificationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18311A232205CD6600ACA136 /* UserNotificationTool.m */; };
 		184D1EB821F1A52C0075F444 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D1EB721F1A52C0075F444 /* AppDelegate.m */; };
@@ -21,8 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		18311A192204890B00ACA136 /* MaxCountdownSettingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaxCountdownSettingView.h; sourceTree = "<group>"; };
-		18311A1A2204890B00ACA136 /* MaxCountdownSettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MaxCountdownSettingView.m; sourceTree = "<group>"; };
+		18311A192204890B00ACA136 /* MaxCountdownSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaxCountdownSettingViewController.h; sourceTree = "<group>"; };
+		18311A1A2204890B00ACA136 /* MaxCountdownSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MaxCountdownSettingViewController.m; sourceTree = "<group>"; };
 		18311A1C22048A3300ACA136 /* UserDefaultsTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDefaultsTool.h; sourceTree = "<group>"; };
 		18311A1D22048A3300ACA136 /* UserDefaultsTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsTool.m; sourceTree = "<group>"; };
 		18311A222205CD6600ACA136 /* UserNotificationTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserNotificationTool.h; sourceTree = "<group>"; };
@@ -57,8 +57,8 @@
 		18311A182204884400ACA136 /* Setting-MaxCountdown */ = {
 			isa = PBXGroup;
 			children = (
-				18311A192204890B00ACA136 /* MaxCountdownSettingView.h */,
-				18311A1A2204890B00ACA136 /* MaxCountdownSettingView.m */,
+				18311A192204890B00ACA136 /* MaxCountdownSettingViewController.h */,
+				18311A1A2204890B00ACA136 /* MaxCountdownSettingViewController.m */,
 			);
 			path = "Setting-MaxCountdown";
 			sourceTree = "<group>";
@@ -208,7 +208,7 @@
 			files = (
 				184D1ED821F1BA420075F444 /* TimeTool.m in Sources */,
 				184D1EC621F1A52E0075F444 /* main.m in Sources */,
-				18311A1B2204890B00ACA136 /* MaxCountdownSettingView.m in Sources */,
+				18311A1B2204890B00ACA136 /* MaxCountdownSettingViewController.m in Sources */,
 				184D1ED421F1B27F0075F444 /* TimeDisplayLabel.m in Sources */,
 				184D1EB821F1A52C0075F444 /* AppDelegate.m in Sources */,
 				18311A242205CD6600ACA136 /* UserNotificationTool.m in Sources */,

@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MaxCountdownSettingView : UIViewController
+@interface MaxCountdownSettingViewController : UITableViewController
 
 @end
 

@@ -19,34 +19,15 @@ static TimeTool *_sharedTimeTool;
     return _sharedTimeTool;
 }
 
-- (NSInteger)hoursFromSeconds:(NSInteger)seconds {
-    return seconds / 3600;
-}
-
-- (NSInteger)minutesRemainderFromSeconds:(NSInteger)seconds {
-    return (seconds % 3600) / 60;
-}
-
-- (NSInteger)secondsRemainderFromSeconds:(NSInteger)seconds {
-    return (seconds % 3600) % 60;
-}
-
 - (NSString *)normalizedCountdownString:(NSInteger)seconds {
-    NSInteger hours = [self hoursFromSeconds:seconds];
-    NSInteger minutesRemainder = [self minutesRemainderFromSeconds:seconds];
-    NSInteger secondsRemainder = [self secondsRemainderFromSeconds:seconds];
+    NSInteger minutes = seconds / 60;
+    NSInteger secondsRemainder = seconds % 60;
     NSString *result = @"";
     
-    if (hours > 0) {
-        result = [result stringByAppendingString:[NSString stringWithFormat:@"%ld:", hours]];
-    }
-    
-    if (minutesRemainder >= 10) {
-        result = [result stringByAppendingString:[NSString stringWithFormat:@"%ld", minutesRemainder]];
-    } else if (minutesRemainder > 0 && hours > 0) {
-        result = [result stringByAppendingString:[NSString stringWithFormat:@"0%ld", minutesRemainder]];
-    } else if (minutesRemainder > 0 && hours == 0) {
-        result = [NSString stringWithFormat:@"%ld", minutesRemainder];
+    if (minutes >= 10) {
+        result = [result stringByAppendingString:[NSString stringWithFormat:@"%ld", minutes]];
+    } else if (minutes > 0) {
+        result = [NSString stringWithFormat:@"%ld", minutes];
     }
     
     if (secondsRemainder < 10) {
