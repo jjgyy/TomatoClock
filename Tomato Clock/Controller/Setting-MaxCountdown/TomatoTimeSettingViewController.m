@@ -6,10 +6,10 @@
 //  Copyright © 2019 Young. All rights reserved.
 //
 
-#import "MaxCountdownSettingViewController.h"
+#import "TomatoTimeSettingViewController.h"
 #import "UserDefaultsTool.h"
 
-@interface MaxCountdownSettingViewController ()
+@interface TomatoTimeSettingViewController ()
 @property (weak, nonatomic) IBOutlet UITableViewCell *smallTomatoCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *middleTomatoCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *bigTomatoCell;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation MaxCountdownSettingViewController
+@implementation TomatoTimeSettingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,19 +41,19 @@
 }
 
 - (void)postNotification {
-    [NSNotificationCenter.defaultCenter postNotificationName:@"resetMaxCountdown" object:nil];
+    [NSNotificationCenter.defaultCenter postNotificationName:@"resetTomatoTime" object:nil];
 }
 
 - (void)setCheckmarkWithUserDefaults {
-    NSInteger maxCountdownSeconds = [UserDefaultsTool.sharedUserDefaultsTool maxCountdownSeconds];
+    NSInteger maxCountdownSeconds = [UserDefaultsTool.sharedUserDefaultsTool maxWorkSeconds];
     switch (maxCountdownSeconds) {
-        case 25*60:
+        case 2:
             self.smallTomatoCell.accessoryType = UITableViewCellAccessoryCheckmark;
             break;
-        case 45*60:
+        case 3:
             self.middleTomatoCell.accessoryType = UITableViewCellAccessoryCheckmark;
             break;
-        case 60*60:
+        case 4:
             self.bigTomatoCell.accessoryType = UITableViewCellAccessoryCheckmark;
             break;
         default:
@@ -72,21 +72,24 @@
 - (void)chooseSmallTomato {
     [self clearAllCheckmark];
     self.smallTomatoCell.accessoryType = UITableViewCellAccessoryCheckmark;
-    [UserDefaultsTool.sharedUserDefaultsTool setMaxCountdownSeconds: 25 * 60];
+    [UserDefaultsTool.sharedUserDefaultsTool setMaxWorkSeconds: 2];
+    [UserDefaultsTool.sharedUserDefaultsTool setMaxRestSeconds: 5];
     [self postNotification];
 }
 
 - (void)chooseMiddleTomato {
     [self clearAllCheckmark];
     self.middleTomatoCell.accessoryType = UITableViewCellAccessoryCheckmark;
-    [UserDefaultsTool.sharedUserDefaultsTool setMaxCountdownSeconds: 45 * 60];
+    [UserDefaultsTool.sharedUserDefaultsTool setMaxWorkSeconds: 3];
+    [UserDefaultsTool.sharedUserDefaultsTool setMaxRestSeconds: 10];
     [self postNotification];
 }
 
 - (void)chooseBigTomato {
     [self clearAllCheckmark];
     self.bigTomatoCell.accessoryType = UITableViewCellAccessoryCheckmark;
-    [UserDefaultsTool.sharedUserDefaultsTool setMaxCountdownSeconds: 60 * 60];
+    [UserDefaultsTool.sharedUserDefaultsTool setMaxWorkSeconds: 4];
+    [UserDefaultsTool.sharedUserDefaultsTool setMaxRestSeconds: 15];
     [self postNotification];
 }
 

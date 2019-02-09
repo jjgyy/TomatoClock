@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18311A1B2204890B00ACA136 /* MaxCountdownSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18311A1A2204890B00ACA136 /* MaxCountdownSettingViewController.m */; };
+		18311A1B2204890B00ACA136 /* TomatoTimeSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18311A1A2204890B00ACA136 /* TomatoTimeSettingViewController.m */; };
 		18311A1E22048A3300ACA136 /* UserDefaultsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18311A1D22048A3300ACA136 /* UserDefaultsTool.m */; };
 		18311A242205CD6600ACA136 /* UserNotificationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18311A232205CD6600ACA136 /* UserNotificationTool.m */; };
 		184D1EB821F1A52C0075F444 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D1EB721F1A52C0075F444 /* AppDelegate.m */; };
@@ -18,11 +18,12 @@
 		184D1ECF21F1B0B60075F444 /* ClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D1ECE21F1B0B60075F444 /* ClockViewController.m */; };
 		184D1ED421F1B27F0075F444 /* TimeDisplayLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D1ED321F1B27F0075F444 /* TimeDisplayLabel.m */; };
 		184D1ED821F1BA420075F444 /* TimeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D1ED721F1BA420075F444 /* TimeTool.m */; };
+		18BB106D220ECEE3002291E1 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB106C220ECEE3002291E1 /* MenuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		18311A192204890B00ACA136 /* MaxCountdownSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaxCountdownSettingViewController.h; sourceTree = "<group>"; };
-		18311A1A2204890B00ACA136 /* MaxCountdownSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MaxCountdownSettingViewController.m; sourceTree = "<group>"; };
+		18311A192204890B00ACA136 /* TomatoTimeSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TomatoTimeSettingViewController.h; sourceTree = "<group>"; };
+		18311A1A2204890B00ACA136 /* TomatoTimeSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomatoTimeSettingViewController.m; sourceTree = "<group>"; };
 		18311A1C22048A3300ACA136 /* UserDefaultsTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDefaultsTool.h; sourceTree = "<group>"; };
 		18311A1D22048A3300ACA136 /* UserDefaultsTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsTool.m; sourceTree = "<group>"; };
 		18311A222205CD6600ACA136 /* UserNotificationTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserNotificationTool.h; sourceTree = "<group>"; };
@@ -41,6 +42,8 @@
 		184D1ED321F1B27F0075F444 /* TimeDisplayLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeDisplayLabel.m; sourceTree = "<group>"; };
 		184D1ED621F1BA420075F444 /* TimeTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeTool.h; sourceTree = "<group>"; };
 		184D1ED721F1BA420075F444 /* TimeTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeTool.m; sourceTree = "<group>"; };
+		18BB106B220ECEE3002291E1 /* MenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		18BB106C220ECEE3002291E1 /* MenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +60,8 @@
 		18311A182204884400ACA136 /* Setting-MaxCountdown */ = {
 			isa = PBXGroup;
 			children = (
-				18311A192204890B00ACA136 /* MaxCountdownSettingViewController.h */,
-				18311A1A2204890B00ACA136 /* MaxCountdownSettingViewController.m */,
+				18311A192204890B00ACA136 /* TomatoTimeSettingViewController.h */,
+				18311A1A2204890B00ACA136 /* TomatoTimeSettingViewController.m */,
 			);
 			path = "Setting-MaxCountdown";
 			sourceTree = "<group>";
@@ -82,7 +85,7 @@
 		184D1EB521F1A52C0075F444 /* Tomato Clock */ = {
 			isa = PBXGroup;
 			children = (
-				184D1ED521F1B9F10075F444 /* Util */,
+				184D1ED521F1B9F10075F444 /* Tool */,
 				184D1ECC21F1B0920075F444 /* Controller */,
 				184D1EB621F1A52C0075F444 /* AppDelegate.h */,
 				184D1EB721F1A52C0075F444 /* AppDelegate.m */,
@@ -98,6 +101,7 @@
 		184D1ECC21F1B0920075F444 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				18BB106A220ECEB4002291E1 /* Menu */,
 				18311A182204884400ACA136 /* Setting-MaxCountdown */,
 				184D1ED021F1B1FA0075F444 /* ClockView */,
 			);
@@ -123,7 +127,7 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		184D1ED521F1B9F10075F444 /* Util */ = {
+		184D1ED521F1B9F10075F444 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
 				184D1ED621F1BA420075F444 /* TimeTool.h */,
@@ -133,7 +137,16 @@
 				18311A222205CD6600ACA136 /* UserNotificationTool.h */,
 				18311A232205CD6600ACA136 /* UserNotificationTool.m */,
 			);
-			path = Util;
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		18BB106A220ECEB4002291E1 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				18BB106B220ECEE3002291E1 /* MenuViewController.h */,
+				18BB106C220ECEE3002291E1 /* MenuViewController.m */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,8 +220,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				184D1ED821F1BA420075F444 /* TimeTool.m in Sources */,
+				18BB106D220ECEE3002291E1 /* MenuViewController.m in Sources */,
 				184D1EC621F1A52E0075F444 /* main.m in Sources */,
-				18311A1B2204890B00ACA136 /* MaxCountdownSettingViewController.m in Sources */,
+				18311A1B2204890B00ACA136 /* TomatoTimeSettingViewController.m in Sources */,
 				184D1ED421F1B27F0075F444 /* TimeDisplayLabel.m in Sources */,
 				184D1EB821F1A52C0075F444 /* AppDelegate.m in Sources */,
 				18311A242205CD6600ACA136 /* UserNotificationTool.m in Sources */,

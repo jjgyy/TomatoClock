@@ -30,25 +30,48 @@ static UserNotificationTool *_sharedUserNotificationTool;
 }
 
 
-- (void)addCountdownOverNotificationWithInterval: (NSInteger)seconds {
+- (void)addWorkOverNotificationWithInterval: (NSInteger)seconds {
     if (seconds <= 0) { return; }
     UNMutableNotificationContent* content = [UNMutableNotificationContent new];
     content.title = [NSString localizedUserNotificationStringForKey:@"完成番茄时" arguments:nil];
-    content.body = [NSString localizedUserNotificationStringForKey:@"点击查看" arguments:nil];
+    //content.body = [NSString localizedUserNotificationStringForKey:@"点击查看" arguments:nil];
     //content.badge = [NSNumber numberWithInteger: 1];
     content.sound = [UNNotificationSound defaultSound];
     
     UNTimeIntervalNotificationTrigger* trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:seconds repeats:NO];
     
-    UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:@"countdownOver" content:content trigger:trigger];
+    UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:@"workOver" content:content trigger:trigger];
     
     [UNUserNotificationCenter.currentNotificationCenter addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
     }];
 }
 
 
-- (void)removeCountdownOverNotification {
-    NSArray<NSString*> *identifiers = [[NSArray alloc] initWithObjects:@"countdownOver", nil];
+- (void)removeWorkOverNotification {
+    NSArray<NSString*> *identifiers = [[NSArray alloc] initWithObjects:@"workOver", nil];
+    [UNUserNotificationCenter.currentNotificationCenter removePendingNotificationRequestsWithIdentifiers: identifiers];
+}
+
+
+- (void)addRestOverNotificationWithInterval: (NSInteger)seconds {
+    if (seconds <= 0) { return; }
+    UNMutableNotificationContent* content = [UNMutableNotificationContent new];
+    content.title = [NSString localizedUserNotificationStringForKey:@"休息时间结束" arguments:nil];
+    //content.body = [NSString localizedUserNotificationStringForKey:@"点击查看" arguments:nil];
+    //content.badge = [NSNumber numberWithInteger: 1];
+    content.sound = [UNNotificationSound defaultSound];
+    
+    UNTimeIntervalNotificationTrigger* trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:seconds repeats:NO];
+    
+    UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:@"restOver" content:content trigger:trigger];
+    
+    [UNUserNotificationCenter.currentNotificationCenter addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+    }];
+}
+
+
+- (void)removeRestOverNotification {
+    NSArray<NSString*> *identifiers = [[NSArray alloc] initWithObjects:@"restOver", nil];
     [UNUserNotificationCenter.currentNotificationCenter removePendingNotificationRequestsWithIdentifiers: identifiers];
 }
 

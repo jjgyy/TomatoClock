@@ -16,9 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)initUserDefaultsForFirstLaunch;
 
-- (void)setMaxCountdownSeconds: (NSInteger) maxCountdownSeconds;
+- (void)setMaxWorkSeconds: (NSInteger) maxWorkSeconds;
 
-- (NSInteger)maxCountdownSeconds;
+- (NSInteger)maxWorkSeconds;
+
+- (void)setMaxRestSeconds: (NSInteger) maxRestSeconds;
+
+- (NSInteger)maxRestSeconds;
 
 - (void)setCountdownState: (NSInteger) countdownState;
 
@@ -27,6 +31,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setLeftCountdownSeconds: (NSInteger) leftCountdownSeconds;
 
 - (NSInteger) leftCountdownSeconds;
+
+- (void)setIsAutoTomato: (BOOL) isAutoTomato;
+
+- (BOOL)isAutoTomato;
 
 @end
 

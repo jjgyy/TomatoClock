@@ -14,20 +14,21 @@
 @interface ClockViewController ()
 
 typedef enum {
-    IsReady = 0,
-    IsRunning = 1,
-    IsPaused = 2,
-    IsOver = 3
+    IsReadyWork = 0,
+    IsWorking = 1,
+    IsReadyRest = 2,
+    IsResting = 3
 } CountdownState;
 @property (nonatomic, assign) CountdownState countdownState;
-@property (nonatomic, assign) NSInteger maxCountdownSeconds;
+@property (nonatomic, assign) NSInteger maxWorkSeconds;
+@property (nonatomic, assign) NSInteger maxRestSeconds;
 @property (nonatomic, assign) NSInteger leftCountdownSeconds;
+@property (nonatomic, assign) BOOL isAutoTomato;
 @property (nonatomic, strong) dispatch_source_t timer;
 
 @property (weak, nonatomic) IBOutlet TimeDisplayLabel *timeDisplayLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countdownStateLabel;
 - (IBAction)clickStart:(UIButton *)sender;
-- (IBAction)clickPause:(UIButton *)sender;
-- (IBAction)clickEnd:(UIButton *)sender;
 - (IBAction)clickReset:(UIButton *)sender;
 
 @end
@@ -36,66 +37,151 @@ typedef enum {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setMaxCountdownSecondsWithUserDefaults];
+    self.isAutoTomato = [UserDefaultsTool.sharedUserDefaultsTool isAutoTomato];
+    self.maxWorkSeconds = [UserDefaultsTool.sharedUserDefaultsTool maxWorkSeconds];
+    self.maxRestSeconds = [UserDefaultsTool.sharedUserDefaultsTool maxRestSeconds];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationDidBecomeActive) name:@"applicationDidBecomeActive" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationWillResignActive) name:@"applicationWillResignActive" object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(setMaxCountdownSecondsWithUserDefaults) name:@"resetMaxCountdown" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(resetIsAutoTomato) name:@"resetIsAutoTomato" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(resetTomatoTime) name:@"resetTomatoTime" object:nil];
 }
-
 
 - (void)applicationDidBecomeActive {
     self.countdownState = (CountdownState)[UserDefaultsTool.sharedUserDefaultsTool countdownState];
-    if (self.countdownState == IsRunning) {
+    if (self.countdownState == IsWorking || self.countdownState == IsResting) {
         NSInteger leftCountdownSeconds = [UserDefaultsTool.sharedUserDefaultsTool leftCountdownSeconds];
         if (leftCountdownSeconds <= 0) {
-            self.countdownState = IsOver;
-            self.leftCountdownSeconds = 0;
-            [self setLabelDisplayedSeconds: 0];
+            if (self.countdownState == IsWorking) {
+                self.countdownState = IsReadyRest;
+                self.leftCountdownSeconds = self.maxRestSeconds;
+            }
+            if (self.countdownState == IsResting) {
+                self.countdownState = IsReadyWork;
+                self.leftCountdownSeconds = self.maxWorkSeconds;
+            }
+            [self setTimeDisplayWithSeconds: self.leftCountdownSeconds];
         } else {
             self.leftCountdownSeconds = leftCountdownSeconds;
             [self startCountdown];
         }
     }
+    [self updateCountdownStateDisplay];
 }
-
 
 - (void)applicationWillResignActive {
     [self cancelTimer];
 }
 
-
-- (void)setMaxCountdownSecondsWithUserDefaults {
-    self.maxCountdownSeconds = [UserDefaultsTool.sharedUserDefaultsTool maxCountdownSeconds];
+- (void)resetIsAutoTomato {
+    self.isAutoTomato = [UserDefaultsTool.sharedUserDefaultsTool isAutoTomato];
 }
 
-- (void)setMaxCountdownSeconds:(NSInteger)maxCountdownSeconds {
-    self->_maxCountdownSeconds = maxCountdownSeconds;
-    if (self.countdownState == IsReady) {
-        self.leftCountdownSeconds = maxCountdownSeconds;
-        [self setLabelDisplayedSeconds: maxCountdownSeconds];
+- (void)resetTomatoTime {
+    self.maxWorkSeconds = [UserDefaultsTool.sharedUserDefaultsTool maxWorkSeconds];
+    self.maxRestSeconds = [UserDefaultsTool.sharedUserDefaultsTool maxRestSeconds];
+}
+
+
+
+
+- (void)setMaxWorkSeconds:(NSInteger)maxWorkSeconds {
+    self->_maxWorkSeconds = maxWorkSeconds;
+    if (self->_countdownState == IsReadyWork) {
+        self->_leftCountdownSeconds = maxWorkSeconds;
+        [self setTimeDisplayWithSeconds: maxWorkSeconds];
     }
 }
 
-- (void)setLabelDisplayedSeconds:(NSInteger)seconds {
+- (void)setMaxRestSeconds:(NSInteger)maxRestSeconds {
+    self->_maxRestSeconds = maxRestSeconds;
+    if (self->_countdownState == IsReadyRest) {
+        self->_leftCountdownSeconds = maxRestSeconds;
+        [self setTimeDisplayWithSeconds: maxRestSeconds];
+    }
+}
+
+- (void)setCountdownState:(CountdownState)countdownState {
+    self->_countdownState = countdownState;
+    [UserDefaultsTool.sharedUserDefaultsTool setCountdownState: countdownState];
+}
+
+- (void)setTimeDisplayWithSeconds:(NSInteger)seconds {
     self.timeDisplayLabel.displayedSeconds = seconds;
 }
 
+- (void)updateCountdownStateDisplay {
+    switch (self.countdownState) {
+        case IsReadyWork:
+            self.countdownStateLabel.text = @"等待工作";
+            break;
+        case IsWorking:
+            self.countdownStateLabel.text = @"正在工作";
+            break;
+        case IsReadyRest:
+            self.countdownStateLabel.text = @"等待休息";
+            break;
+        case IsResting:
+            self.countdownStateLabel.text = @"正在休息";
+            break;
+        default:
+            NSLog(@"错误的countdownState");
+            break;
+    }
+}
 
-- (void)startTimer {
+
+- (void)startWork {
+    self.countdownState = IsWorking;
+    [self updateCountdownStateDisplay];
+    [UserNotificationTool.sharedUserNotificationTool addWorkOverNotificationWithInterval: self.leftCountdownSeconds];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     self.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     dispatch_source_set_timer(self.timer, DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC, 0);
     dispatch_source_set_event_handler(self.timer, ^{
         self.leftCountdownSeconds --;
-        if (self.leftCountdownSeconds <= 0) {
+        if (self.leftCountdownSeconds < 0) {
+            self.countdownState = IsReadyRest;
+            self.leftCountdownSeconds = self.maxRestSeconds;
             dispatch_sync(dispatch_get_main_queue(), ^{
-                [self setLabelDisplayedSeconds: self.leftCountdownSeconds];
-                self.countdownState = IsOver;
+                [self setTimeDisplayWithSeconds: self.maxRestSeconds];
+                [self updateCountdownStateDisplay];
+                [self cancelTimer];
+                if (self.isAutoTomato) {
+                    [self startRest];
+                }
             });
-            [self cancelTimer];
         } else {
             dispatch_sync(dispatch_get_main_queue(), ^{
-                [self setLabelDisplayedSeconds: self.leftCountdownSeconds];
+                [self setTimeDisplayWithSeconds: self.leftCountdownSeconds];
+            });
+        }
+    });
+    dispatch_resume(self.timer);
+}
+
+- (void)startRest {
+    self.countdownState = IsResting;
+    [self updateCountdownStateDisplay];
+    [UserNotificationTool.sharedUserNotificationTool addRestOverNotificationWithInterval: self.leftCountdownSeconds];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    self.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    dispatch_source_set_timer(self.timer, DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC, 0);
+    dispatch_source_set_event_handler(self.timer, ^{
+        self.leftCountdownSeconds --;
+        if (self.leftCountdownSeconds < 0) {
+            self.countdownState = IsReadyWork;
+            self.leftCountdownSeconds = self.maxWorkSeconds;
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self setTimeDisplayWithSeconds: self.maxWorkSeconds];
+                [self updateCountdownStateDisplay];
+                [self cancelTimer];
+                if (self.isAutoTomato) {
+                    [self startWork];
+                }
+            });
+        } else {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self setTimeDisplayWithSeconds: self.leftCountdownSeconds];
             });
         }
     });
@@ -112,37 +198,26 @@ typedef enum {
 
 - (void)startCountdown {
     if (self.leftCountdownSeconds <= 0) { return; }
-    self.countdownState = IsRunning;
-    [UserDefaultsTool.sharedUserDefaultsTool setCountdownState: self.countdownState];
-    [UserDefaultsTool.sharedUserDefaultsTool setLeftCountdownSeconds: self.leftCountdownSeconds];
-    [UserNotificationTool.sharedUserNotificationTool addCountdownOverNotificationWithInterval: self.leftCountdownSeconds];
-    [self startTimer];
-}
-
-
-- (void)pauseCountdown {
-    self.countdownState = IsPaused;
-    [UserDefaultsTool.sharedUserDefaultsTool setCountdownState: IsPaused];
-    [UserNotificationTool.sharedUserNotificationTool removeCountdownOverNotification];
-    [self cancelTimer];
+    if (self.countdownState == IsReadyWork) {
+        [self startWork];
+    }
+    if (self.countdownState == IsReadyRest) {
+        [self startRest];
+    }
 }
 
 
 - (void)endCountdown {
-    self.countdownState = IsOver;
-    [UserDefaultsTool.sharedUserDefaultsTool setCountdownState: IsOver];
     [self cancelTimer];
-    self.leftCountdownSeconds = 0;
-    [self setLabelDisplayedSeconds: 0];
-}
-
-
-- (void)resetCountdown {
-    self.countdownState = IsReady;
-    [UserDefaultsTool.sharedUserDefaultsTool setCountdownState: IsReady];
-    [self cancelTimer];
-    self.leftCountdownSeconds = self.maxCountdownSeconds;
-    [self setLabelDisplayedSeconds: self.maxCountdownSeconds];
+    if (self.countdownState == IsWorking) {
+        [UserNotificationTool.sharedUserNotificationTool removeWorkOverNotification];
+    }
+    if (self.countdownState == IsResting) {
+        [UserNotificationTool.sharedUserNotificationTool removeRestOverNotification];
+    }
+    self.countdownState = IsReadyWork;
+    self.leftCountdownSeconds = self.maxWorkSeconds;
+    [self setTimeDisplayWithSeconds: self.maxWorkSeconds];
 }
 
 
@@ -150,15 +225,7 @@ typedef enum {
     [self startCountdown];
 }
 
-- (IBAction)clickPause:(UIButton *)sender {
-    [self pauseCountdown];
-}
-
-- (IBAction)clickEnd:(UIButton *)sender {
-    [self endCountdown];
-}
-
 - (IBAction)clickReset:(UIButton *)sender {
-    [self resetCountdown];
+    [self endCountdown];
 }
 @end

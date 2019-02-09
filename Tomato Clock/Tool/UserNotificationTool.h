@@ -17,9 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)requestAuthorizationForFirstLaunch;
 
-- (void)addCountdownOverNotificationWithInterval: (NSInteger)seconds;
+- (void)addWorkOverNotificationWithInterval: (NSInteger)seconds;
 
-- (void)removeCountdownOverNotification;
+- (void)removeWorkOverNotification;
+
+- (void)addRestOverNotificationWithInterval: (NSInteger)seconds;
+
+- (void)removeRestOverNotification;
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler;
 

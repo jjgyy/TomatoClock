@@ -47,20 +47,6 @@
                                     <action selector="clickStart:" destination="Xz7-M9-DnZ" eventType="touchUpInside" id="Cbd-Fy-CwS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2V-zp-eaM">
-                                <rect key="frame" x="166.5" y="525" width="42" height="30"/>
-                                <state key="normal" title="Pause"/>
-                                <connections>
-                                    <action selector="clickPause:" destination="Xz7-M9-DnZ" eventType="touchUpInside" id="9bc-ke-dF3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXz-ey-n1F">
-                                <rect key="frame" x="172.5" y="563" width="30" height="30"/>
-                                <state key="normal" title="End"/>
-                                <connections>
-                                    <action selector="clickEnd:" destination="Xz7-M9-DnZ" eventType="touchUpInside" id="S54-do-PUb"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qhm-S0-Jom">
                                 <rect key="frame" x="162.5" y="601" width="50" height="30"/>
                                 <state key="normal" title="Restart"/>
@@ -68,19 +54,23 @@
                                     <action selector="clickReset:" destination="Xz7-M9-DnZ" eventType="touchUpInside" id="RnA-6q-Flh"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="等待工作" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16t-pz-r6S">
+                                <rect key="frame" x="152.5" y="139" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TTo-98-scS" firstAttribute="centerX" secondItem="u5u-lL-KEB" secondAttribute="centerX" id="58B-of-YG3"/>
+                            <constraint firstItem="16t-pz-r6S" firstAttribute="centerX" secondItem="u5u-lL-KEB" secondAttribute="centerX" id="8uk-j3-nX4"/>
                             <constraint firstItem="FYU-tp-3At" firstAttribute="centerY" secondItem="u5u-lL-KEB" secondAttribute="centerY" id="E7L-a7-spc"/>
                             <constraint firstItem="u5u-lL-KEB" firstAttribute="bottom" secondItem="TTo-98-scS" secondAttribute="bottom" constant="150" id="Gof-pK-5O6"/>
-                            <constraint firstItem="U2V-zp-eaM" firstAttribute="centerX" secondItem="u5u-lL-KEB" secondAttribute="centerX" id="MLo-1z-lP1"/>
                             <constraint firstItem="Qhm-S0-Jom" firstAttribute="centerX" secondItem="u5u-lL-KEB" secondAttribute="centerX" id="Sc5-Bh-JvF"/>
-                            <constraint firstItem="u5u-lL-KEB" firstAttribute="bottom" secondItem="U2V-zp-eaM" secondAttribute="bottom" constant="112" id="XQS-wE-hzd"/>
-                            <constraint firstItem="u5u-lL-KEB" firstAttribute="bottom" secondItem="eXz-ey-n1F" secondAttribute="bottom" constant="74" id="fr1-V9-tHA"/>
+                            <constraint firstItem="16t-pz-r6S" firstAttribute="top" secondItem="u5u-lL-KEB" secondAttribute="top" constant="75" id="U1K-RG-YwJ"/>
                             <constraint firstItem="u5u-lL-KEB" firstAttribute="bottom" secondItem="Qhm-S0-Jom" secondAttribute="bottom" constant="36" id="oV4-XD-Rra"/>
                             <constraint firstItem="FYU-tp-3At" firstAttribute="centerX" secondItem="u5u-lL-KEB" secondAttribute="centerX" id="s6O-yN-Der"/>
-                            <constraint firstItem="eXz-ey-n1F" firstAttribute="centerX" secondItem="u5u-lL-KEB" secondAttribute="centerX" id="sgP-fV-2TS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="u5u-lL-KEB"/>
                     </view>
@@ -92,6 +82,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="countdownStateLabel" destination="16t-pz-r6S" id="WP0-Bw-KvH"/>
                         <outlet property="timeDisplayLabel" destination="FYU-tp-3At" id="RJl-rg-er8"/>
                     </connections>
                 </viewController>
@@ -99,11 +90,10 @@
             </objects>
             <point key="canvasLocation" x="465" y="-288"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="aS8-9N-j0o">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HID-Jy-og2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="3UM-sy-dXu" sceneMemberID="viewController">
+                <tableViewController id="3UM-sy-dXu" customClass="MenuViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="oBp-78-Yco">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,15 +101,44 @@
                         <sections>
                             <tableViewSection headerTitle="基本设置" id="HqC-dJ-vvp">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="6XJ-bU-jpV">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="W7i-jr-3MN">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W7i-jr-3MN" id="WHj-J2-KK3">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自动番茄循环" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xx0-Pr-hrx">
+                                                    <rect key="frame" x="23" y="11.5" width="104" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EAO-5T-jBy">
+                                                    <rect key="frame" x="308" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="clickAutoTomatoSwitch:" destination="3UM-sy-dXu" eventType="valueChanged" id="Ovj-mL-QvZ"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xx0-Pr-hrx" secondAttribute="trailing" constant="20" symbolic="YES" id="BV9-18-b0C"/>
+                                                <constraint firstItem="Xx0-Pr-hrx" firstAttribute="centerY" secondItem="WHj-J2-KK3" secondAttribute="centerY" id="POL-NU-NxY"/>
+                                                <constraint firstAttribute="trailing" secondItem="EAO-5T-jBy" secondAttribute="trailing" constant="18" id="h5K-vr-ZBA"/>
+                                                <constraint firstItem="Xx0-Pr-hrx" firstAttribute="leading" secondItem="WHj-J2-KK3" secondAttribute="leading" constant="23" id="r7j-gQ-88v"/>
+                                                <constraint firstItem="EAO-5T-jBy" firstAttribute="centerY" secondItem="WHj-J2-KK3" secondAttribute="centerY" id="zPu-vX-d0H"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="6XJ-bU-jpV">
+                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6XJ-bU-jpV" id="n8x-p2-4Do">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="番茄时长" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpq-w8-4Eg">
-                                                    <rect key="frame" x="23" y="11.5" width="70" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="番茄时长计划" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpq-w8-4Eg">
+                                                    <rect key="frame" x="23" y="11.5" width="104" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -143,14 +162,18 @@
                             <outlet property="delegate" destination="3UM-sy-dXu" id="jxt-Eq-P8n"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="autoTomatoSwitch" destination="EAO-5T-jBy" id="vaQ-5S-zDk"/>
+                    </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HID-Jy-og2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1349.5999999999999" y="-612.14392803598207"/>
         </scene>
-        <!--Max Countdown Setting View Controller-->
+        <!--Tomato Time Setting View Controller-->
         <scene sceneID="k1p-ce-gB8">
             <objects>
-                <tableViewController id="OK7-TV-opT" customClass="MaxCountdownSettingViewController" sceneMemberID="viewController">
+                <tableViewController id="OK7-TV-opT" customClass="TomatoTimeSettingViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="LNV-gJ-dGb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
