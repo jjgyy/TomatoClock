@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TomatoTimeSettingViewController : UITableViewController
+@interface TomatoTimeSettingViewController: UITableViewController
 
 @end
 

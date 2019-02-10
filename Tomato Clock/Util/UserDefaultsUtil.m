@@ -1,20 +1,20 @@
 //
-//  UserDefaultsTool.m
+//  UserDefaultsUtil.m
 //  Tomato Clock
 //
 //  Created by Apple on 2019/2/1.
 //  Copyright © 2019 Young. All rights reserved.
 //
 
-#import "UserDefaultsTool.h"
+#import "UserDefaultsUtil.h"
 
-@implementation UserDefaultsTool
+@implementation UserDefaultsUtil
 
-static UserDefaultsTool *_sharedUserDefaultsTool;
+static UserDefaultsUtil *_sharedUserDefaultsTool;
 
-+ (UserDefaultsTool *)sharedUserDefaultsTool {
++ (UserDefaultsUtil *)sharedUserDefaultsUtil {
     if (!_sharedUserDefaultsTool) {
-        _sharedUserDefaultsTool = [UserDefaultsTool new];
+        _sharedUserDefaultsTool = [UserDefaultsUtil new];
     }
     return _sharedUserDefaultsTool;
 }
@@ -93,6 +93,14 @@ static UserDefaultsTool *_sharedUserDefaultsTool;
 
 - (BOOL)isAutoTomato {
     return [NSUserDefaults.standardUserDefaults boolForKey: @"isAutoTomato"];
+}
+
+- (void)setIsAllowingTomatoOverNotification: (BOOL) isAllowingTomatoOverNotification {
+    [NSUserDefaults.standardUserDefaults setBool: isAllowingTomatoOverNotification forKey: @"isAllowingTomatoOverNotification"];
+}
+
+- (BOOL)isAllowingTomatoOverNotification {
+    return [NSUserDefaults.standardUserDefaults boolForKey: @"isAllowingTomatoOverNotification"];
 }
 
 

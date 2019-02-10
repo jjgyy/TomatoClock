@@ -1,5 +1,5 @@
 //
-//  TimeTool.h
+//  TimeUtil.h
 //  Tomato Clock
 //
 //  Created by Apple on 2019/1/18.
@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TimeTool : NSObject
+@interface TimeUtil : NSObject
 
-@property (class, nonatomic, readonly, strong) TimeTool *sharedTimeTool;
+@property (class, nonatomic, readonly, strong) TimeUtil *sharedTimeUtil;
 
 - (NSString*)normalizedCountdownString: (NSInteger) seconds;
 

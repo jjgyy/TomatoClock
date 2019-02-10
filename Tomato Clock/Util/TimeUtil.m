@@ -1,20 +1,20 @@
 //
-//  TimeTool.m
+//  TimeUtil.m
 //  Tomato Clock
 //
 //  Created by Apple on 2019/1/18.
 //  Copyright © 2019 Young. All rights reserved.
 //
 
-#import "TimeTool.h"
+#import "TimeUtil.h"
 
-@implementation TimeTool
+@implementation TimeUtil
 
-static TimeTool *_sharedTimeTool;
+static TimeUtil *_sharedTimeTool;
 
-+ (TimeTool *)sharedTimeTool {
++ (TimeUtil *)sharedTimeUtil {
     if (!_sharedTimeTool) {
-        _sharedTimeTool = [TimeTool new];
+        _sharedTimeTool = [TimeUtil new];
     }
     return _sharedTimeTool;
 }

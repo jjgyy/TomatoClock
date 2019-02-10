@@ -1,5 +1,5 @@
 //
-//  UserNotificationTool.h
+//  UserNotificationUtil.h
 //  Tomato Clock
 //
 //  Created by Apple on 2019/2/2.
@@ -11,19 +11,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UserNotificationTool : NSObject<UNUserNotificationCenterDelegate>
+@interface UserNotificationUtil : NSObject<UNUserNotificationCenterDelegate>
 
-@property (class, nonatomic, readonly, strong) UserNotificationTool *sharedUserNotificationTool;
+@property (class, nonatomic, readonly, strong) UserNotificationUtil *sharedUserNotificationUtil;
 
 - (void)requestAuthorizationForFirstLaunch;
 
-- (void)addWorkOverNotificationWithInterval: (NSInteger)seconds;
+- (void)addNotificationWithInterval:(NSInteger)seconds  title:(NSString *)title  identifier:(NSString *)identifier;
 
-- (void)removeWorkOverNotification;
-
-- (void)addRestOverNotificationWithInterval: (NSInteger)seconds;
-
-- (void)removeRestOverNotification;
+- (void)removeNotificationWithIdentifier:(NSString *)identifier;
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler;
 

@@ -8,8 +8,8 @@
 
 #import "ClockViewController.h"
 #import "TimeDisplayLabel.h"
-#import "UserDefaultsTool.h"
-#import "UserNotificationTool.h"
+#import "UserDefaultsUtil.h"
+#import "ClockNotificationTool.h"
 
 @interface ClockViewController ()
 
@@ -37,50 +37,68 @@ typedef enum {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.isAutoTomato = [UserDefaultsTool.sharedUserDefaultsTool isAutoTomato];
-    self.maxWorkSeconds = [UserDefaultsTool.sharedUserDefaultsTool maxWorkSeconds];
-    self.maxRestSeconds = [UserDefaultsTool.sharedUserDefaultsTool maxRestSeconds];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationDidBecomeActive) name:@"applicationDidBecomeActive" object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationWillResignActive) name:@"applicationWillResignActive" object:nil];
+    self.isAutoTomato = [UserDefaultsUtil.sharedUserDefaultsUtil isAutoTomato];
+    self.maxWorkSeconds = [UserDefaultsUtil.sharedUserDefaultsUtil maxWorkSeconds];
+    self.maxRestSeconds = [UserDefaultsUtil.sharedUserDefaultsUtil maxRestSeconds];
+    //[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationDidBecomeActive) name:@"applicationDidBecomeActive" object:nil];
+//    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(applicationWillResignActive) name:@"applicationWillResignActive" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(resetIsAutoTomato) name:@"resetIsAutoTomato" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(resetTomatoTime) name:@"resetTomatoTime" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(resetIsAllowingTomatoOverNotification) name:@"resetIsAllowingTomatoOverNotification" object:nil];
 }
 
-- (void)applicationDidBecomeActive {
-    self.countdownState = (CountdownState)[UserDefaultsTool.sharedUserDefaultsTool countdownState];
-    if (self.countdownState == IsWorking || self.countdownState == IsResting) {
-        NSInteger leftCountdownSeconds = [UserDefaultsTool.sharedUserDefaultsTool leftCountdownSeconds];
-        if (leftCountdownSeconds <= 0) {
-            if (self.countdownState == IsWorking) {
-                self.countdownState = IsReadyRest;
-                self.leftCountdownSeconds = self.maxRestSeconds;
-            }
-            if (self.countdownState == IsResting) {
-                self.countdownState = IsReadyWork;
-                self.leftCountdownSeconds = self.maxWorkSeconds;
-            }
-            [self setTimeDisplayWithSeconds: self.leftCountdownSeconds];
-        } else {
-            self.leftCountdownSeconds = leftCountdownSeconds;
-            [self startCountdown];
-        }
-    }
-    [self updateCountdownStateDisplay];
-}
+//- (void)applicationDidBecomeActive {
+//    self->_countdownState = (CountdownState)[UserDefaultsUtil.sharedUserDefaultsTool countdownState];
+//    if (self.countdownState == IsWorking || self.countdownState == IsResting) {
+//        NSInteger leftCountdownSeconds = [UserDefaultsUtil.sharedUserDefaultsTool leftCountdownSeconds];
+//        if (leftCountdownSeconds <= 0) {
+//            if (self.countdownState == IsWorking) {
+//                self.countdownState = IsReadyRest;
+//                self.leftCountdownSeconds = self.maxRestSeconds;
+//            }
+//            if (self.countdownState == IsResting) {
+//                self.countdownState = IsReadyWork;
+//                self.leftCountdownSeconds = self.maxWorkSeconds;
+//            }
+//            [self setTimeDisplayWithSeconds: self.leftCountdownSeconds];
+//        } else {
+//            self.leftCountdownSeconds = leftCountdownSeconds;
+//            [self startCountdown];
+//        }
+//    }
+//    [self updateCountdownStateDisplay];
+//}
 
-- (void)applicationWillResignActive {
-    [self cancelTimer];
+//- (void)applicationWillResignActive {
+//    //[self cancelTimer];
+//}
+- (void)resetTomatoTime {
+    self.maxWorkSeconds = [UserDefaultsUtil.sharedUserDefaultsUtil maxWorkSeconds];
+    self.maxRestSeconds = [UserDefaultsUtil.sharedUserDefaultsUtil maxRestSeconds];
 }
 
 - (void)resetIsAutoTomato {
-    self.isAutoTomato = [UserDefaultsTool.sharedUserDefaultsTool isAutoTomato];
+    self.isAutoTomato = [UserDefaultsUtil.sharedUserDefaultsUtil isAutoTomato];
 }
 
-- (void)resetTomatoTime {
-    self.maxWorkSeconds = [UserDefaultsTool.sharedUserDefaultsTool maxWorkSeconds];
-    self.maxRestSeconds = [UserDefaultsTool.sharedUserDefaultsTool maxRestSeconds];
+- (void)resetIsAllowingTomatoOverNotification {
+    BOOL isAllowingTomatoOverNotification = [UserDefaultsUtil.sharedUserDefaultsUtil isAllowingTomatoOverNotification];
+    if (isAllowingTomatoOverNotification) {
+        if (self.countdownState == IsWorking) {
+            [ClockNotificationTool.defaultClockNotificationTool addWorkOverNotificationWithInterval: self.leftCountdownSeconds];
+        }
+        if (self.countdownState == IsResting) {
+            [ClockNotificationTool.defaultClockNotificationTool addRestOverNotificationWithInterval: self.leftCountdownSeconds];
+        }
+    } else {
+        if (self.countdownState == IsWorking) {
+            [ClockNotificationTool.defaultClockNotificationTool removeWorkOverNotification];
+        }
+        if (self.countdownState == IsResting) {
+            [ClockNotificationTool.defaultClockNotificationTool removeRestOverNotification];
+        }
+    }
 }
-
 
 
 
@@ -102,7 +120,7 @@ typedef enum {
 
 - (void)setCountdownState:(CountdownState)countdownState {
     self->_countdownState = countdownState;
-    [UserDefaultsTool.sharedUserDefaultsTool setCountdownState: countdownState];
+    [UserDefaultsUtil.sharedUserDefaultsUtil setCountdownState: countdownState];
 }
 
 - (void)setTimeDisplayWithSeconds:(NSInteger)seconds {
@@ -130,11 +148,12 @@ typedef enum {
 }
 
 
-- (void)startWork {
+- (void)startWorkWithNotification {
     self.countdownState = IsWorking;
     [self updateCountdownStateDisplay];
-    [UserNotificationTool.sharedUserNotificationTool addWorkOverNotificationWithInterval: self.leftCountdownSeconds];
+    [ClockNotificationTool.defaultClockNotificationTool addWorkOverNotificationWithInterval: self.leftCountdownSeconds];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    [self cancelTimer];
     self.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     dispatch_source_set_timer(self.timer, DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC, 0);
     dispatch_source_set_event_handler(self.timer, ^{
@@ -147,7 +166,7 @@ typedef enum {
                 [self updateCountdownStateDisplay];
                 [self cancelTimer];
                 if (self.isAutoTomato) {
-                    [self startRest];
+                    [self startRestWithNotification];
                 }
             });
         } else {
@@ -159,10 +178,10 @@ typedef enum {
     dispatch_resume(self.timer);
 }
 
-- (void)startRest {
+- (void)startRestWithNotification {
     self.countdownState = IsResting;
     [self updateCountdownStateDisplay];
-    [UserNotificationTool.sharedUserNotificationTool addRestOverNotificationWithInterval: self.leftCountdownSeconds];
+    [ClockNotificationTool.defaultClockNotificationTool addRestOverNotificationWithInterval: self.leftCountdownSeconds];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     self.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     dispatch_source_set_timer(self.timer, DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC, 0);
@@ -176,7 +195,7 @@ typedef enum {
                 [self updateCountdownStateDisplay];
                 [self cancelTimer];
                 if (self.isAutoTomato) {
-                    [self startWork];
+                    [self startWorkWithNotification];
                 }
             });
         } else {
@@ -199,10 +218,10 @@ typedef enum {
 - (void)startCountdown {
     if (self.leftCountdownSeconds <= 0) { return; }
     if (self.countdownState == IsReadyWork) {
-        [self startWork];
+        [self startWorkWithNotification];
     }
     if (self.countdownState == IsReadyRest) {
-        [self startRest];
+        [self startRestWithNotification];
     }
 }
 
@@ -210,10 +229,10 @@ typedef enum {
 - (void)endCountdown {
     [self cancelTimer];
     if (self.countdownState == IsWorking) {
-        [UserNotificationTool.sharedUserNotificationTool removeWorkOverNotification];
+        [ClockNotificationTool.defaultClockNotificationTool removeWorkOverNotification];
     }
     if (self.countdownState == IsResting) {
-        [UserNotificationTool.sharedUserNotificationTool removeRestOverNotification];
+        [ClockNotificationTool.defaultClockNotificationTool removeRestOverNotification];
     }
     self.countdownState = IsReadyWork;
     self.leftCountdownSeconds = self.maxWorkSeconds;

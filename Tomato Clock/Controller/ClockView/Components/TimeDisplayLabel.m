@@ -7,7 +7,7 @@
 //
 
 #import "TimeDisplayLabel.h"
-#import "TimeTool.h"
+#import "TimeUtil.h"
 
 @implementation TimeDisplayLabel
 - (instancetype)init
@@ -21,7 +21,7 @@
 
 - (void)setDisplayedSeconds:(NSInteger)seconds {
     _displayedSeconds = seconds;
-    self.text = [TimeTool.sharedTimeTool normalizedCountdownString: seconds];
+    self.text = [TimeUtil.sharedTimeUtil normalizedCountdownString: seconds];
 }
 
 

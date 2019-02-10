@@ -1,21 +1,21 @@
 //
-//  UserNotificationTool.m
+//  UserNotificationUtil.m
 //  Tomato Clock
 //
 //  Created by Apple on 2019/2/2.
 //  Copyright © 2019 Young. All rights reserved.
 //
 
-#import "UserNotificationTool.h"
+#import "UserNotificationUtil.h"
 
-@implementation UserNotificationTool
+@implementation UserNotificationUtil
 
-static UserNotificationTool *_sharedUserNotificationTool;
+static UserNotificationUtil *_sharedUserNotificationTool;
 
 
-+ (UserNotificationTool *)sharedUserNotificationTool {
++ (UserNotificationUtil *)sharedUserNotificationUtil {
     if (!_sharedUserNotificationTool) {
-        _sharedUserNotificationTool = [UserNotificationTool new];
+        _sharedUserNotificationTool = [UserNotificationUtil new];
     }
     return _sharedUserNotificationTool;
 }
@@ -30,48 +30,25 @@ static UserNotificationTool *_sharedUserNotificationTool;
 }
 
 
-- (void)addWorkOverNotificationWithInterval: (NSInteger)seconds {
+- (void)addNotificationWithInterval:(NSInteger)seconds  title:(NSString *)title  identifier:(NSString *)identifier {
     if (seconds <= 0) { return; }
     UNMutableNotificationContent* content = [UNMutableNotificationContent new];
-    content.title = [NSString localizedUserNotificationStringForKey:@"完成番茄时" arguments:nil];
+    content.title = [NSString localizedUserNotificationStringForKey: title arguments: nil];
     //content.body = [NSString localizedUserNotificationStringForKey:@"点击查看" arguments:nil];
     //content.badge = [NSNumber numberWithInteger: 1];
     content.sound = [UNNotificationSound defaultSound];
     
     UNTimeIntervalNotificationTrigger* trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:seconds repeats:NO];
     
-    UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:@"workOver" content:content trigger:trigger];
+    UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier: identifier content:content trigger:trigger];
     
     [UNUserNotificationCenter.currentNotificationCenter addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
     }];
 }
 
 
-- (void)removeWorkOverNotification {
-    NSArray<NSString*> *identifiers = [[NSArray alloc] initWithObjects:@"workOver", nil];
-    [UNUserNotificationCenter.currentNotificationCenter removePendingNotificationRequestsWithIdentifiers: identifiers];
-}
-
-
-- (void)addRestOverNotificationWithInterval: (NSInteger)seconds {
-    if (seconds <= 0) { return; }
-    UNMutableNotificationContent* content = [UNMutableNotificationContent new];
-    content.title = [NSString localizedUserNotificationStringForKey:@"休息时间结束" arguments:nil];
-    //content.body = [NSString localizedUserNotificationStringForKey:@"点击查看" arguments:nil];
-    //content.badge = [NSNumber numberWithInteger: 1];
-    content.sound = [UNNotificationSound defaultSound];
-    
-    UNTimeIntervalNotificationTrigger* trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:seconds repeats:NO];
-    
-    UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:@"restOver" content:content trigger:trigger];
-    
-    [UNUserNotificationCenter.currentNotificationCenter addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-    }];
-}
-
-
-- (void)removeRestOverNotification {
-    NSArray<NSString*> *identifiers = [[NSArray alloc] initWithObjects:@"restOver", nil];
+- (void)removeNotificationWithIdentifier:(NSString *)identifier {
+    NSArray<NSString*> *identifiers = [[NSArray alloc] initWithObjects: identifier, nil];
     [UNUserNotificationCenter.currentNotificationCenter removePendingNotificationRequestsWithIdentifiers: identifiers];
 }
 

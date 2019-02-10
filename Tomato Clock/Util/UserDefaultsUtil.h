@@ -1,5 +1,5 @@
 //
-//  UserDefaultsTool.h
+//  UserDefaultsUtil.h
 //  Tomato Clock
 //
 //  Created by Apple on 2019/2/1.
@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UserDefaultsTool : NSObject
+@interface UserDefaultsUtil : NSObject
 
-@property (class, nonatomic, readonly, strong) UserDefaultsTool *sharedUserDefaultsTool;
+@property (class, nonatomic, readonly, strong) UserDefaultsUtil *sharedUserDefaultsUtil;
 
 - (void)initUserDefaultsForFirstLaunch;
 
@@ -35,6 +35,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setIsAutoTomato: (BOOL) isAutoTomato;
 
 - (BOOL)isAutoTomato;
+
+- (void)setIsAllowingTomatoOverNotification: (BOOL) isNotificationAllowed;
+
+- (BOOL)isAllowingTomatoOverNotification;
 
 @end
 
