@@ -1,0 +1,681 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		035C257411BEFEAD8312DDAFDC0565BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CB39E715FBCDAA142E6513E126200A /* Foundation.framework */; };
+		041EF2B787D90E0E3962561BA4E1738F /* ActionSheetStringPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 349F013823A3BE40806B8F01EC6DFBED /* ActionSheetStringPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		13401A32771F356CEFFD06357CF1F636 /* ActionSheetCustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 231DCA3C85ADCC7F4B1913EB53DFD3EA /* ActionSheetCustomPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		1CB1CB2D9FEC491EA88D37F766DE037D /* ActionSheetPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FD76F3C0EA9D530AEE6953AC0B6A111 /* ActionSheetPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		21A8C6353BBA7243D3C12D73F0BF717C /* ActionSheetPicker-3.0-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C36E3AA4B3F352F27314804643926C3 /* ActionSheetPicker-3.0-dummy.m */; };
+		23FECAC24D2B5EBEC0C97D22B509DA21 /* SWActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCFC16A9EEDC9577D4B82B34209FC8A /* SWActionSheet.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2E8CEDA5D1D1AFCA99896E8ECD32BDFC /* ActionSheetDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA3BAEFEF1C844EFC26F876D4C84F54 /* ActionSheetDatePicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		347AE684C6C2C748667367DDE309D6D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CB39E715FBCDAA142E6513E126200A /* Foundation.framework */; };
+		3F96B20F0C2AC9CE15B758BCB29937D5 /* ActionSheetLocalePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F439F8B9E301946EB3DA3918B8E3555 /* ActionSheetLocalePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		40AEA6D62AEC6E035E831F64AEE8F6B1 /* ActionSheetDatePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = D956220C8D5769DE0BB0240160578873 /* ActionSheetDatePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		417F4E50652D4603217A10E8B0E434E4 /* SWActionSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CA86569F6972AA750C271220226F89E /* SWActionSheet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4A7856A1AC3A731232B49C457638130C /* ActionSheetPicker-3.0-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B650A6734356132D4E2B302806D7317 /* ActionSheetPicker-3.0-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DBFE4D14B94F8141C74E6E0E42F296E /* DistancePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 06089E6035C6A3AB092DAB2A4A33BBA5 /* DistancePickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FDA5E42437B5A8D2BEAE1CD6FCA7C99 /* DistancePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DBCA29692CD3813F6133032AAE91B8 /* DistancePickerView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6E0AF4E52CD32383371C81DCF98BCB4B /* ActionSheetMultipleStringPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 378985F11AF73DD179E43D1F68093E4E /* ActionSheetMultipleStringPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		70EE20D273826A590072B84B3BF4C9AF /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9CEF4F8F8987FF72B4F38FB8274E15 /* AbstractActionSheetPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		8F8EE62B17FD757CF94F65FE4FB53DDB /* ActionSheetCustomPickerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 28334A1D3EAAC02F4E5B5EFE5EEDEDAF /* ActionSheetCustomPickerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		93D4AC5B61D69B409855A32C15CA59D4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF2A2B0720AE923C22BED3192888BE0 /* UIKit.framework */; };
+		994FAF78A0B863C9DB3477251CE6F626 /* ActionSheetLocalePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D699F7AB132786D5F2E4581865556B96 /* ActionSheetLocalePicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		B05CF649E247F9FB49B75DB37025137C /* ActionSheetMultipleStringPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = A36E5EB22CEF383BC1696062F35D48A6 /* ActionSheetMultipleStringPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C27CE2E05D64F688BD10E299BCD893D9 /* Pods-Tomato Clock-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCCD7CE70F7A5AF5DA48D2B88D754EC /* Pods-Tomato Clock-dummy.m */; };
+		CE1D81A9E5732C81390F9638F509BF33 /* ActionSheetDistancePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B2D2524337AB1B13966718FC34FD7E /* ActionSheetDistancePicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D472EA278101E9ECEFB5390196697EB4 /* AbstractActionSheetPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = ACEAF9340A6036620DC57C6A1E589C3C /* AbstractActionSheetPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4A0EF3C8D926CB9B8A70B5BEB98462A /* ActionSheetDistancePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 51CB89AACCAAC1268971F2DFB1C868B4 /* ActionSheetDistancePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA8A62459064BD43431D300F91061A02 /* ActionSheetCustomPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 6335AD4FA89E87A38E8D3F70EAA1434B /* ActionSheetCustomPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBD9B31D148A3115CBE248FD68D5D79E /* Pods-Tomato Clock-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 552A232AFBCBC43A5822E97A0780B1BD /* Pods-Tomato Clock-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F34587BC85B9DABF65BBF21135E0595A /* ActionSheetStringPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0763A135055B53A5FB7FA6BEF80B8EA4 /* ActionSheetStringPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9013217F33C2D3285C17E8E8BFF2CF58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA690F67CF3CCEAB728338928850DA6B;
+			remoteInfo = "ActionSheetPicker-3.0";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		06089E6035C6A3AB092DAB2A4A33BBA5 /* DistancePickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DistancePickerView.h; path = Pickers/DistancePickerView.h; sourceTree = "<group>"; };
+		0763A135055B53A5FB7FA6BEF80B8EA4 /* ActionSheetStringPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetStringPicker.m; path = Pickers/ActionSheetStringPicker.m; sourceTree = "<group>"; };
+		0B650A6734356132D4E2B302806D7317 /* ActionSheetPicker-3.0-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ActionSheetPicker-3.0-umbrella.h"; sourceTree = "<group>"; };
+		12DBCA29692CD3813F6133032AAE91B8 /* DistancePickerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DistancePickerView.m; path = Pickers/DistancePickerView.m; sourceTree = "<group>"; };
+		231DCA3C85ADCC7F4B1913EB53DFD3EA /* ActionSheetCustomPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetCustomPicker.m; path = Pickers/ActionSheetCustomPicker.m; sourceTree = "<group>"; };
+		28334A1D3EAAC02F4E5B5EFE5EEDEDAF /* ActionSheetCustomPickerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetCustomPickerDelegate.h; path = Pickers/ActionSheetCustomPickerDelegate.h; sourceTree = "<group>"; };
+		2F439F8B9E301946EB3DA3918B8E3555 /* ActionSheetLocalePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetLocalePicker.h; path = Pickers/ActionSheetLocalePicker.h; sourceTree = "<group>"; };
+		349F013823A3BE40806B8F01EC6DFBED /* ActionSheetStringPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetStringPicker.h; path = Pickers/ActionSheetStringPicker.h; sourceTree = "<group>"; };
+		36913C807E8B8269FBDE85E4253FC2B5 /* ActionSheetPicker-3.0.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ActionSheetPicker-3.0.xcconfig"; sourceTree = "<group>"; };
+		378985F11AF73DD179E43D1F68093E4E /* ActionSheetMultipleStringPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetMultipleStringPicker.h; path = Pickers/ActionSheetMultipleStringPicker.h; sourceTree = "<group>"; };
+		3CA86569F6972AA750C271220226F89E /* SWActionSheet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWActionSheet.h; path = Pickers/SWActionSheet.h; sourceTree = "<group>"; };
+		40CB39E715FBCDAA142E6513E126200A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4A3AC9E5A3AB80D10DB61A88CA8B87CC /* ActionSheetPicker-3.0.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ActionSheetPicker-3.0.modulemap"; sourceTree = "<group>"; };
+		4E51CE4DA4FF81BA2A75164FDFC013EE /* ActionSheetPicker-3.0-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ActionSheetPicker-3.0-Info.plist"; sourceTree = "<group>"; };
+		4FD76F3C0EA9D530AEE6953AC0B6A111 /* ActionSheetPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetPicker.h; path = Pickers/ActionSheetPicker.h; sourceTree = "<group>"; };
+		51CB89AACCAAC1268971F2DFB1C868B4 /* ActionSheetDistancePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetDistancePicker.h; path = Pickers/ActionSheetDistancePicker.h; sourceTree = "<group>"; };
+		552A232AFBCBC43A5822E97A0780B1BD /* Pods-Tomato Clock-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tomato Clock-umbrella.h"; sourceTree = "<group>"; };
+		56EC7AF6EB4FAE5EA4832F13DCF7A665 /* Pods-Tomato Clock-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tomato Clock-Info.plist"; sourceTree = "<group>"; };
+		57CF0D178AA9C20DF5714B311780B506 /* Pods-Tomato Clock-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tomato Clock-acknowledgements.plist"; sourceTree = "<group>"; };
+		5C7BA8757462792058ADE6083A1209F5 /* Pods-Tomato Clock-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Tomato Clock-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5FA3BAEFEF1C844EFC26F876D4C84F54 /* ActionSheetDatePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetDatePicker.m; path = Pickers/ActionSheetDatePicker.m; sourceTree = "<group>"; };
+		6335AD4FA89E87A38E8D3F70EAA1434B /* ActionSheetCustomPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetCustomPicker.h; path = Pickers/ActionSheetCustomPicker.h; sourceTree = "<group>"; };
+		6C36E3AA4B3F352F27314804643926C3 /* ActionSheetPicker-3.0-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ActionSheetPicker-3.0-dummy.m"; sourceTree = "<group>"; };
+		6EC77C574ECF0E706D8BFDA1E9F5E9BA /* ActionSheetPicker-3.0-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ActionSheetPicker-3.0-prefix.pch"; sourceTree = "<group>"; };
+		70B2D2524337AB1B13966718FC34FD7E /* ActionSheetDistancePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetDistancePicker.m; path = Pickers/ActionSheetDistancePicker.m; sourceTree = "<group>"; };
+		74329BB11EE5EB240DFCE90EAF78302C /* ActionSheetPicker_3_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ActionSheetPicker_3_0.framework; path = "ActionSheetPicker-3.0.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A99B0A5ECD25AFBB5A7356BAA023F8A /* Pods-Tomato Clock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tomato Clock.debug.xcconfig"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A36E5EB22CEF383BC1696062F35D48A6 /* ActionSheetMultipleStringPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetMultipleStringPicker.m; path = Pickers/ActionSheetMultipleStringPicker.m; sourceTree = "<group>"; };
+		A8F0EA3E76810A51EE0F2F34E7827EAC /* Pods-Tomato Clock-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tomato Clock-frameworks.sh"; sourceTree = "<group>"; };
+		ACEAF9340A6036620DC57C6A1E589C3C /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AbstractActionSheetPicker.h; path = Pickers/AbstractActionSheetPicker.h; sourceTree = "<group>"; };
+		BB9CEF4F8F8987FF72B4F38FB8274E15 /* AbstractActionSheetPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AbstractActionSheetPicker.m; path = Pickers/AbstractActionSheetPicker.m; sourceTree = "<group>"; };
+		C80945F7C9F7FF6A6336AB873F3E5E68 /* Pods_Tomato_Clock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Tomato_Clock.framework; path = "Pods-Tomato Clock.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDCCD7CE70F7A5AF5DA48D2B88D754EC /* Pods-Tomato Clock-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Tomato Clock-dummy.m"; sourceTree = "<group>"; };
+		D699F7AB132786D5F2E4581865556B96 /* ActionSheetLocalePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetLocalePicker.m; path = Pickers/ActionSheetLocalePicker.m; sourceTree = "<group>"; };
+		D8C88AD96A39FC9F3559B2303A40B47A /* Pods-Tomato Clock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tomato Clock.release.xcconfig"; sourceTree = "<group>"; };
+		D913DC155F5E7CC1CEE34934118620D6 /* Pods-Tomato Clock.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Tomato Clock.modulemap"; sourceTree = "<group>"; };
+		D956220C8D5769DE0BB0240160578873 /* ActionSheetDatePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetDatePicker.h; path = Pickers/ActionSheetDatePicker.h; sourceTree = "<group>"; };
+		ECF2A2B0720AE923C22BED3192888BE0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		EFCFC16A9EEDC9577D4B82B34209FC8A /* SWActionSheet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWActionSheet.m; path = Pickers/SWActionSheet.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		99B1C135EAE277D9919B31D2D31E75BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				347AE684C6C2C748667367DDE309D6D3 /* Foundation.framework in Frameworks */,
+				93D4AC5B61D69B409855A32C15CA59D4 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9EE40BC1A46C2AB3CBD52381A2BCBA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				035C257411BEFEAD8312DDAFDC0565BF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E169A450ED27AC725DF52953F66D11E0 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1ADAF091798AD3C3418AFD1675710E87 /* ActionSheetPicker-3.0 */ = {
+			isa = PBXGroup;
+			children = (
+				ACEAF9340A6036620DC57C6A1E589C3C /* AbstractActionSheetPicker.h */,
+				BB9CEF4F8F8987FF72B4F38FB8274E15 /* AbstractActionSheetPicker.m */,
+				6335AD4FA89E87A38E8D3F70EAA1434B /* ActionSheetCustomPicker.h */,
+				231DCA3C85ADCC7F4B1913EB53DFD3EA /* ActionSheetCustomPicker.m */,
+				28334A1D3EAAC02F4E5B5EFE5EEDEDAF /* ActionSheetCustomPickerDelegate.h */,
+				D956220C8D5769DE0BB0240160578873 /* ActionSheetDatePicker.h */,
+				5FA3BAEFEF1C844EFC26F876D4C84F54 /* ActionSheetDatePicker.m */,
+				51CB89AACCAAC1268971F2DFB1C868B4 /* ActionSheetDistancePicker.h */,
+				70B2D2524337AB1B13966718FC34FD7E /* ActionSheetDistancePicker.m */,
+				2F439F8B9E301946EB3DA3918B8E3555 /* ActionSheetLocalePicker.h */,
+				D699F7AB132786D5F2E4581865556B96 /* ActionSheetLocalePicker.m */,
+				378985F11AF73DD179E43D1F68093E4E /* ActionSheetMultipleStringPicker.h */,
+				A36E5EB22CEF383BC1696062F35D48A6 /* ActionSheetMultipleStringPicker.m */,
+				4FD76F3C0EA9D530AEE6953AC0B6A111 /* ActionSheetPicker.h */,
+				349F013823A3BE40806B8F01EC6DFBED /* ActionSheetStringPicker.h */,
+				0763A135055B53A5FB7FA6BEF80B8EA4 /* ActionSheetStringPicker.m */,
+				06089E6035C6A3AB092DAB2A4A33BBA5 /* DistancePickerView.h */,
+				12DBCA29692CD3813F6133032AAE91B8 /* DistancePickerView.m */,
+				3CA86569F6972AA750C271220226F89E /* SWActionSheet.h */,
+				EFCFC16A9EEDC9577D4B82B34209FC8A /* SWActionSheet.m */,
+				4D5965C14D029E06F924800DF865F6C2 /* Support Files */,
+			);
+			name = "ActionSheetPicker-3.0";
+			path = "ActionSheetPicker-3.0";
+			sourceTree = "<group>";
+		};
+		2C2481A9F58AAC5AC1AF68246515F478 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				812844427D2B2CED1960542C547764B4 /* Pods-Tomato Clock */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		3D8586EE4AA05F306BD8530C0B6A36B3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				74329BB11EE5EB240DFCE90EAF78302C /* ActionSheetPicker_3_0.framework */,
+				C80945F7C9F7FF6A6336AB873F3E5E68 /* Pods_Tomato_Clock.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4D5965C14D029E06F924800DF865F6C2 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4A3AC9E5A3AB80D10DB61A88CA8B87CC /* ActionSheetPicker-3.0.modulemap */,
+				36913C807E8B8269FBDE85E4253FC2B5 /* ActionSheetPicker-3.0.xcconfig */,
+				6C36E3AA4B3F352F27314804643926C3 /* ActionSheetPicker-3.0-dummy.m */,
+				4E51CE4DA4FF81BA2A75164FDFC013EE /* ActionSheetPicker-3.0-Info.plist */,
+				6EC77C574ECF0E706D8BFDA1E9F5E9BA /* ActionSheetPicker-3.0-prefix.pch */,
+				0B650A6734356132D4E2B302806D7317 /* ActionSheetPicker-3.0-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ActionSheetPicker-3.0";
+			sourceTree = "<group>";
+		};
+		677E4523AE48E9B45B548A8CA27D8455 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1ADAF091798AD3C3418AFD1675710E87 /* ActionSheetPicker-3.0 */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		812844427D2B2CED1960542C547764B4 /* Pods-Tomato Clock */ = {
+			isa = PBXGroup;
+			children = (
+				D913DC155F5E7CC1CEE34934118620D6 /* Pods-Tomato Clock.modulemap */,
+				5C7BA8757462792058ADE6083A1209F5 /* Pods-Tomato Clock-acknowledgements.markdown */,
+				57CF0D178AA9C20DF5714B311780B506 /* Pods-Tomato Clock-acknowledgements.plist */,
+				CDCCD7CE70F7A5AF5DA48D2B88D754EC /* Pods-Tomato Clock-dummy.m */,
+				A8F0EA3E76810A51EE0F2F34E7827EAC /* Pods-Tomato Clock-frameworks.sh */,
+				56EC7AF6EB4FAE5EA4832F13DCF7A665 /* Pods-Tomato Clock-Info.plist */,
+				552A232AFBCBC43A5822E97A0780B1BD /* Pods-Tomato Clock-umbrella.h */,
+				7A99B0A5ECD25AFBB5A7356BAA023F8A /* Pods-Tomato Clock.debug.xcconfig */,
+				D8C88AD96A39FC9F3559B2303A40B47A /* Pods-Tomato Clock.release.xcconfig */,
+			);
+			name = "Pods-Tomato Clock";
+			path = "Target Support Files/Pods-Tomato Clock";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
+				677E4523AE48E9B45B548A8CA27D8455 /* Pods */,
+				3D8586EE4AA05F306BD8530C0B6A36B3 /* Products */,
+				2C2481A9F58AAC5AC1AF68246515F478 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		E169A450ED27AC725DF52953F66D11E0 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				40CB39E715FBCDAA142E6513E126200A /* Foundation.framework */,
+				ECF2A2B0720AE923C22BED3192888BE0 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		09ED1871328AB9F480B1D5CD28302505 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D472EA278101E9ECEFB5390196697EB4 /* AbstractActionSheetPicker.h in Headers */,
+				EA8A62459064BD43431D300F91061A02 /* ActionSheetCustomPicker.h in Headers */,
+				8F8EE62B17FD757CF94F65FE4FB53DDB /* ActionSheetCustomPickerDelegate.h in Headers */,
+				40AEA6D62AEC6E035E831F64AEE8F6B1 /* ActionSheetDatePicker.h in Headers */,
+				D4A0EF3C8D926CB9B8A70B5BEB98462A /* ActionSheetDistancePicker.h in Headers */,
+				3F96B20F0C2AC9CE15B758BCB29937D5 /* ActionSheetLocalePicker.h in Headers */,
+				6E0AF4E52CD32383371C81DCF98BCB4B /* ActionSheetMultipleStringPicker.h in Headers */,
+				4A7856A1AC3A731232B49C457638130C /* ActionSheetPicker-3.0-umbrella.h in Headers */,
+				1CB1CB2D9FEC491EA88D37F766DE037D /* ActionSheetPicker.h in Headers */,
+				041EF2B787D90E0E3962561BA4E1738F /* ActionSheetStringPicker.h in Headers */,
+				4DBFE4D14B94F8141C74E6E0E42F296E /* DistancePickerView.h in Headers */,
+				417F4E50652D4603217A10E8B0E434E4 /* SWActionSheet.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E244A0E876D98193A5B182DA602883DD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBD9B31D148A3115CBE248FD68D5D79E /* Pods-Tomato Clock-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CCBEB450883A1446A17408A19289B7C1 /* Pods-Tomato Clock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DEB56AE898B29FA2F430EF7556B77D8B /* Build configuration list for PBXNativeTarget "Pods-Tomato Clock" */;
+			buildPhases = (
+				E244A0E876D98193A5B182DA602883DD /* Headers */,
+				BEA18375ABC57DB1FA360E25AF1F51BB /* Sources */,
+				A9EE40BC1A46C2AB3CBD52381A2BCBA9 /* Frameworks */,
+				474F9F2BF628EFE230469C6F01A6BBEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				909D2C5E8FAAAD8A87227839282FB805 /* PBXTargetDependency */,
+			);
+			name = "Pods-Tomato Clock";
+			productName = "Pods-Tomato Clock";
+			productReference = C80945F7C9F7FF6A6336AB873F3E5E68 /* Pods_Tomato_Clock.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DA690F67CF3CCEAB728338928850DA6B /* ActionSheetPicker-3.0 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1609F9F0171AE599DA7B3D1D48C03CF9 /* Build configuration list for PBXNativeTarget "ActionSheetPicker-3.0" */;
+			buildPhases = (
+				09ED1871328AB9F480B1D5CD28302505 /* Headers */,
+				75EAF8FA490433813CA88E3283B15F08 /* Sources */,
+				99B1C135EAE277D9919B31D2D31E75BC /* Frameworks */,
+				C7C3F3C6D286A1E9A2DEE934BF9D68E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ActionSheetPicker-3.0";
+			productName = "ActionSheetPicker-3.0";
+			productReference = 74329BB11EE5EB240DFCE90EAF78302C /* ActionSheetPicker_3_0.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 3D8586EE4AA05F306BD8530C0B6A36B3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DA690F67CF3CCEAB728338928850DA6B /* ActionSheetPicker-3.0 */,
+				CCBEB450883A1446A17408A19289B7C1 /* Pods-Tomato Clock */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		474F9F2BF628EFE230469C6F01A6BBEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7C3F3C6D286A1E9A2DEE934BF9D68E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		75EAF8FA490433813CA88E3283B15F08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70EE20D273826A590072B84B3BF4C9AF /* AbstractActionSheetPicker.m in Sources */,
+				13401A32771F356CEFFD06357CF1F636 /* ActionSheetCustomPicker.m in Sources */,
+				2E8CEDA5D1D1AFCA99896E8ECD32BDFC /* ActionSheetDatePicker.m in Sources */,
+				CE1D81A9E5732C81390F9638F509BF33 /* ActionSheetDistancePicker.m in Sources */,
+				994FAF78A0B863C9DB3477251CE6F626 /* ActionSheetLocalePicker.m in Sources */,
+				B05CF649E247F9FB49B75DB37025137C /* ActionSheetMultipleStringPicker.m in Sources */,
+				21A8C6353BBA7243D3C12D73F0BF717C /* ActionSheetPicker-3.0-dummy.m in Sources */,
+				F34587BC85B9DABF65BBF21135E0595A /* ActionSheetStringPicker.m in Sources */,
+				5FDA5E42437B5A8D2BEAE1CD6FCA7C99 /* DistancePickerView.m in Sources */,
+				23FECAC24D2B5EBEC0C97D22B509DA21 /* SWActionSheet.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEA18375ABC57DB1FA360E25AF1F51BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C27CE2E05D64F688BD10E299BCD893D9 /* Pods-Tomato Clock-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		909D2C5E8FAAAD8A87227839282FB805 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ActionSheetPicker-3.0";
+			target = DA690F67CF3CCEAB728338928850DA6B /* ActionSheetPicker-3.0 */;
+			targetProxy = 9013217F33C2D3285C17E8E8BFF2CF58 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2CA84F364B8320B7C2F687E5732DFA30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36913C807E8B8269FBDE85E4253FC2B5 /* ActionSheetPicker-3.0.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ActionSheetPicker-3.0/ActionSheetPicker-3.0-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ActionSheetPicker-3.0/ActionSheetPicker-3.0-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ActionSheetPicker-3.0/ActionSheetPicker-3.0.modulemap";
+				PRODUCT_MODULE_NAME = ActionSheetPicker_3_0;
+				PRODUCT_NAME = ActionSheetPicker_3_0;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3F236457D0064CC787940FFD41F36ED8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8C88AD96A39FC9F3559B2303A40B47A /* Pods-Tomato Clock.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Tomato Clock/Pods-Tomato Clock-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Tomato Clock/Pods-Tomato Clock.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A105C1752A0A49B30ED621B71E226CDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		C1391485F05B41BD35738A433056B7FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		CFA621175F8D9029CE8B4482152115A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A99B0A5ECD25AFBB5A7356BAA023F8A /* Pods-Tomato Clock.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Tomato Clock/Pods-Tomato Clock-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Tomato Clock/Pods-Tomato Clock.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DF572977C30B4A9D968AFBF2B13B177C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36913C807E8B8269FBDE85E4253FC2B5 /* ActionSheetPicker-3.0.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ActionSheetPicker-3.0/ActionSheetPicker-3.0-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ActionSheetPicker-3.0/ActionSheetPicker-3.0-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ActionSheetPicker-3.0/ActionSheetPicker-3.0.modulemap";
+				PRODUCT_MODULE_NAME = ActionSheetPicker_3_0;
+				PRODUCT_NAME = ActionSheetPicker_3_0;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1609F9F0171AE599DA7B3D1D48C03CF9 /* Build configuration list for PBXNativeTarget "ActionSheetPicker-3.0" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF572977C30B4A9D968AFBF2B13B177C /* Debug */,
+				2CA84F364B8320B7C2F687E5732DFA30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1391485F05B41BD35738A433056B7FA /* Debug */,
+				A105C1752A0A49B30ED621B71E226CDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DEB56AE898B29FA2F430EF7556B77D8B /* Build configuration list for PBXNativeTarget "Pods-Tomato Clock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFA621175F8D9029CE8B4482152115A7 /* Debug */,
+				3F236457D0064CC787940FFD41F36ED8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
