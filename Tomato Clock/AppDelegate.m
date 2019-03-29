@@ -35,7 +35,7 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    [self stratBadgeNumberCount];
+    //[self stratBadgeNumberCount];
     [self startBgTask];
     /** 播放声音 */
     [self.player play];

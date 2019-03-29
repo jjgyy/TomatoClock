@@ -13,12 +13,12 @@
 
 @interface ClockViewController ()
 
-typedef enum {
+typedef NS_ENUM(NSInteger, CountdownState) {
     IsReadyWork = 0,
     IsWorking = 1,
     IsReadyRest = 2,
     IsResting = 3
-} CountdownState;
+};
 @property (nonatomic, assign) CountdownState countdownState;
 @property (nonatomic, assign) NSInteger maxWorkSeconds;
 @property (nonatomic, assign) NSInteger maxRestSeconds;
